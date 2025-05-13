@@ -198,8 +198,11 @@ class ScreenProductDetails extends StatelessWidget {
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: const [
-                            Text("Color"),
+                          children: [
+                            Text(
+                              "Color",
+                              style: theme.textTheme.bodySmall,
+                            ),
                             Icon(Icons.keyboard_arrow_down),
                           ],
                         ),
