@@ -7,7 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'di_container.dart';
 
-class MyApp extends StatefulWidget{
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
@@ -16,7 +16,6 @@ class MyApp extends StatefulWidget{
 
 class _MyAppState extends State<MyApp> {
   final NavigationService navigationService = sl();
-
 
   @override
   void initState() {
@@ -54,10 +53,10 @@ class _MyAppState extends State<MyApp> {
 class AppBehavior extends ScrollBehavior {
   @override
   Widget buildViewportChrome(
-      BuildContext context,
-      Widget child,
-      AxisDirection axisDirection,
-      ) {
+    BuildContext context,
+    Widget child,
+    AxisDirection axisDirection,
+  ) {
     return child;
   }
 }
