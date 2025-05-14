@@ -2,6 +2,7 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter_boilerplate_code/src/features/errors/presentation/screens/screen_error.dart';
 import 'package:flutter_boilerplate_code/src/features/products/presentation/screens/screen_product_details.dart';
 import 'package:flutter_boilerplate_code/src/features/home/presentation/screens/screen_home.dart';
+import 'package:flutter_boilerplate_code/src/features/products/presentation/screens/screens_review.dart';
 import 'package:flutter_boilerplate_code/src/routes/routes.dart';
 
 class RouterHelper {
@@ -16,6 +17,11 @@ class RouterHelper {
   static final Handler _productDetailsHandler =
       Handler(handlerFunc: (context, Map<String, dynamic> parameters) {
     return const ScreenProductDetails();
+  });
+
+  static final Handler _reviewsHandler =
+      Handler(handlerFunc: (context, Map<String, dynamic> parameters) {
+    return const ScreensReviews();
   });
 
   static final Handler _notFoundHandler =
@@ -33,5 +39,9 @@ class RouterHelper {
     router.define(Routes.productDetails,
         handler: _productDetailsHandler,
         transitionType: TransitionType.inFromBottom);
+
+    // reviews and rating page
+    router.define(Routes.reviews,
+        handler: _reviewsHandler, transitionType: TransitionType.inFromBottom);
   }
 }
