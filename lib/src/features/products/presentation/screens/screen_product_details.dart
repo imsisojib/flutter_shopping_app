@@ -10,6 +10,12 @@ class ScreenProductDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
+    final List<String> imageList = [
+      AppImages.blackDress,
+      AppImages.blackDress2,
+      AppImages.streetCloths,
+    ];
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -39,14 +45,25 @@ class ScreenProductDetails extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(0),
-                      child: Image.asset(
-                        AppImages.blackDress,
-                        width: double.infinity,
-                        height: 250,
-                        fit: BoxFit.cover,
-                        alignment: Alignment.topCenter,
+                    // Image with carousel part
+                    SizedBox(
+                      height: 250,
+                      child: PageView.builder(
+                        controller: PageController(viewportFraction: 0.55),
+                        itemCount: imageList.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 2),
+                            child: ClipRRect(
+                              child: Image.asset(
+                                imageList[index],
+                                width: double.infinity,
+                                fit: BoxFit.cover,
+                                alignment: Alignment.topCenter,
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ),
 
@@ -318,8 +335,8 @@ class ScreenProductDetails extends StatelessWidget {
                           const SizedBox(height: 16),
                           Text(
                             "This lightweight and breathable summer dress is perfect for warm days. Designed with comfort and style in mind.",
-                            style: theme.textTheme.bodySmall
-                                ?.copyWith(color: Colors.black),
+                            style: theme.textTheme.bodyMedium
+                                ?.copyWith(color: Colors.black54),
                           ),
                         ],
                       ),
@@ -327,6 +344,60 @@ class ScreenProductDetails extends StatelessWidget {
 
                     const SizedBox(height: 20),
                   ],
+                ),
+
+                // Shipping info part
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 14),
+                    decoration: const BoxDecoration(
+                      border: Border(
+                        top: BorderSide(color: Colors.grey, width: 0.5),
+                        bottom: BorderSide(color: Colors.grey, width: 0.5),
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Shipping Info",
+                          style: theme.textTheme.bodyMedium,
+                        ),
+                        Icon(Icons.arrow_forward_ios,
+                            size: 16, color: Colors.grey),
+                      ],
+                    ),
+                  ),
+                ),
+
+                // support part
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 14),
+                    decoration: const BoxDecoration(
+                      border: Border(
+                        top: BorderSide(color: Colors.grey, width: 1),
+                        bottom: BorderSide(color: Colors.grey, width: 0.5),
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Support",
+                          style: theme.textTheme.bodyMedium,
+                        ),
+                        Icon(Icons.arrow_forward_ios,
+                            size: 16, color: Colors.grey),
+                      ],
+                    ),
+                  ),
                 ),
               ]),
             ),
