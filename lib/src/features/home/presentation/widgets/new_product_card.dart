@@ -7,6 +7,8 @@ class NewProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return InkWell(
       onTap: () {
         Navigator.pushNamed(context, Routes.productDetails);
@@ -57,13 +59,10 @@ class NewProductCard extends StatelessWidget {
                         color: Colors.black, // background color
                         borderRadius: BorderRadius.circular(8), // border radius
                       ),
-                      child: const Text(
+                      child: Text(
                         "New",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: theme.textTheme.bodySmall
+                            ?.copyWith(color: Colors.white),
                       ),
                     ),
                   ),
@@ -74,13 +73,11 @@ class NewProductCard extends StatelessWidget {
               padding: const EdgeInsets.all(12.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   Text(
                     "Evening Dress",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                    ),
+                    style: theme.textTheme.titleSmall
+                        ?.copyWith(color: Colors.black),
                   ),
                   SizedBox(height: 4),
                   Row(
@@ -89,27 +86,22 @@ class NewProductCard extends StatelessWidget {
                       SizedBox(width: 4),
                       Text(
                         "4.5",
-                        style: TextStyle(
-                          color: Colors.black87,
-                          fontSize: 14,
-                        ),
+                        style: theme.textTheme.bodySmall
+                            ?.copyWith(color: Colors.black54),
                       ),
                     ],
                   ),
                   SizedBox(height: 4),
                   Text(
                     "Sitilly",
-                    style: TextStyle(
-                      fontSize: 13,
-                      color: Colors.black54,
-                    ),
+                    style: theme.textTheme.bodySmall
+                        ?.copyWith(color: Colors.black54),
                   ),
                   SizedBox(height: 4),
                   Text(
                     "\$99.99",
-                    style: TextStyle(
+                    style: theme.textTheme.titleMedium?.copyWith(
                       color: Colors.grey,
-                      fontSize: 14,
                     ),
                   ),
                 ],

@@ -123,8 +123,8 @@ class ScreenProductDetails extends StatelessWidget {
                                                 alignment: Alignment.center,
                                                 child: Text(
                                                   size,
-                                                  style: const TextStyle(
-                                                      fontSize: 14),
+                                                  style: theme
+                                                      .textTheme.bodyMedium,
                                                 ),
                                               );
                                             },
@@ -208,8 +208,8 @@ class ScreenProductDetails extends StatelessWidget {
                                                 alignment: Alignment.center,
                                                 child: Text(
                                                   size,
-                                                  style: const TextStyle(
-                                                      fontSize: 14),
+                                                  style: theme
+                                                      .textTheme.bodyMedium,
                                                 ),
                                               );
                                             },

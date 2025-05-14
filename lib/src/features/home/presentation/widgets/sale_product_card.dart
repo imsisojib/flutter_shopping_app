@@ -6,6 +6,8 @@ class SaleProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Container(
       width: 180,
       margin: const EdgeInsets.only(left: 16),
@@ -52,13 +54,10 @@ class SaleProductCard extends StatelessWidget {
                       color: Colors.red,
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: const Text(
+                    child: Text(
                       "-20%",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: theme.textTheme.bodySmall
+                          ?.copyWith(color: Colors.white),
                     ),
                   ),
                 ),
@@ -85,7 +84,7 @@ class SaleProductCard extends StatelessWidget {
             padding: const EdgeInsets.all(12.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 Row(
                   children: [
                     Icon(Icons.star, color: Colors.orange, size: 16),
@@ -96,47 +95,36 @@ class SaleProductCard extends StatelessWidget {
                     SizedBox(width: 6),
                     Text(
                       "(7)",
-                      style: TextStyle(
-                        color: Colors.black87,
-                        fontSize: 14,
-                      ),
+                      style: theme.textTheme.bodyMedium
+                          ?.copyWith(color: Colors.black87),
                     ),
                   ],
                 ),
                 SizedBox(height: 4),
                 Text(
                   "Sitilly",
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: Colors.black54,
-                  ),
+                  style: theme.textTheme.bodySmall
+                      ?.copyWith(color: Colors.black54),
                 ),
                 SizedBox(height: 4),
                 Text(
                   "Summer Dress",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                  ),
+                  style: theme.textTheme.titleMedium
+                      ?.copyWith(color: Colors.black),
                 ),
                 SizedBox(height: 4),
                 Row(
-                  children: const [
-                    Text(
-                      "\$29.95",
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 14,
-                        decoration: TextDecoration.lineThrough,
-                      ),
-                    ),
+                  children: [
+                    Text("\$29.95",
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          color: Colors.grey,
+                          decoration: TextDecoration.lineThrough,
+                        )),
                     SizedBox(width: 8),
                     Text(
                       "\$20.90",
-                      style: TextStyle(
+                      style: theme.textTheme.titleMedium?.copyWith(
                         color: Colors.red,
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],

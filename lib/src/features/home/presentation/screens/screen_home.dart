@@ -86,12 +86,11 @@ class ScreenHome extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(
+                                Text(
                                   'Street Clothes',
-                                  style: TextStyle(
+                                  style:
+                                      theme.textTheme.headlineLarge?.copyWith(
                                     color: Colors.white,
-                                    fontSize: 54,
-                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ],
@@ -109,28 +108,25 @@ class ScreenHome extends StatelessWidget {
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: const [
+                          children: [
                             Text(
                               "Sale",
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
+                              style: theme.textTheme.titleLarge?.copyWith(
+                                color: Colors.black,
                               ),
                             ),
                             Text(
                               "view all",
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
+                              style: theme.textTheme.titleMedium?.copyWith(
+                                color: Colors.black,
                               ),
                             ),
                           ],
                         ),
                         const SizedBox(height: 4),
-                        const Text(
+                        Text(
                           "Super summer sale",
-                          style: TextStyle(
-                            fontSize: 14,
+                          style: theme.textTheme.titleSmall?.copyWith(
                             color: Colors.grey,
                           ),
                         ),
@@ -170,12 +166,11 @@ class ScreenHome extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(
+                                Text(
                                   'New Collection',
-                                  style: TextStyle(
+                                  style:
+                                      theme.textTheme.displayMedium?.copyWith(
                                     color: Colors.white,
-                                    fontSize: 45,
-                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ],
@@ -200,12 +195,11 @@ class ScreenHome extends StatelessWidget {
                                 child: Container(
                                   alignment: Alignment.center,
                                   color: Colors.white,
-                                  child: const Text(
+                                  child: Text(
                                     'Summer\nSale',
-                                    style: TextStyle(
+                                    style:
+                                        theme.textTheme.displayMedium?.copyWith(
                                       color: Colors.red,
-                                      fontSize: 36,
-                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                 ),
@@ -220,22 +214,14 @@ class ScreenHome extends StatelessWidget {
                                         fit: BoxFit.cover,
                                       ),
                                     ),
-                                    const Positioned(
+                                    Positioned(
                                       bottom: 30,
                                       left: 30,
                                       child: Text(
                                         'Black',
-                                        style: TextStyle(
+                                        style: theme.textTheme.displaySmall
+                                            ?.copyWith(
                                           color: Colors.white,
-                                          fontSize: 36,
-                                          fontWeight: FontWeight.bold,
-                                          shadows: [
-                                            Shadow(
-                                              blurRadius: 4,
-                                              color: Colors.black45,
-                                              offset: Offset(1, 1),
-                                            )
-                                          ],
                                         ),
                                       ),
                                     ),
@@ -256,22 +242,13 @@ class ScreenHome extends StatelessWidget {
                                   fit: BoxFit.cover,
                                 ),
                               ),
-                              const Positioned(
+                              Positioned(
                                 bottom: 100,
                                 left: 50,
                                 child: Text(
                                   'Mens\nHoodies',
-                                  style: TextStyle(
+                                  style: theme.textTheme.displaySmall?.copyWith(
                                     color: Colors.white,
-                                    fontSize: 36,
-                                    fontWeight: FontWeight.bold,
-                                    shadows: [
-                                      Shadow(
-                                        blurRadius: 4,
-                                        color: Colors.black45,
-                                        offset: Offset(1, 1),
-                                      )
-                                    ],
                                   ),
                                 ),
                               ),
@@ -299,6 +276,8 @@ class ScreenHome extends StatelessWidget {
 class _SectionNewProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Column(
       children: [
         // new card section start here
@@ -309,28 +288,25 @@ class _SectionNewProduct extends StatelessWidget {
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children: [
                   Text(
                     "New",
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
+                    style: theme.textTheme.titleLarge?.copyWith(
+                      color: Colors.black,
                     ),
                   ),
                   Text(
                     "view all",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      color: Colors.black,
                     ),
                   ),
                 ],
               ),
               const SizedBox(height: 4),
-              const Text(
+              Text(
                 "You have never seen it before",
-                style: TextStyle(
-                  fontSize: 14,
+                style: theme.textTheme.bodySmall?.copyWith(
                   color: Colors.grey,
                 ),
               ),
