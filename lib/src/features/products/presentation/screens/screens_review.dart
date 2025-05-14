@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate_code/src/resources/app_images.dart';
 
 class ScreensReviews extends StatelessWidget {
   const ScreensReviews({super.key});
@@ -199,8 +200,7 @@ class ScreensReviews extends StatelessWidget {
                   child: CircleAvatar(
                     radius: 20,
                     backgroundColor: Colors.white,
-                    backgroundImage:
-                        const AssetImage('assets/images/image 2.png'),
+                    backgroundImage: const AssetImage(AppImages.blackDress2),
                   ),
                 ),
               ],

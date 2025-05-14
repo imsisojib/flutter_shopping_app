@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate_code/src/resources/app_images.dart';
 import 'package:flutter_boilerplate_code/src/routes/routes.dart';
 
 class ScreenProductDetails extends StatelessWidget {
@@ -41,7 +42,7 @@ class ScreenProductDetails extends StatelessWidget {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(0),
                       child: Image.asset(
-                        'assets/images/image.png',
+                        AppImages.blackDress,
                         width: double.infinity,
                         height: 250,
                         fit: BoxFit.cover,

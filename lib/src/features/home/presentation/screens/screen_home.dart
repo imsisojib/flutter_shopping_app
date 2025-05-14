@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate_code/src/features/home/presentation/widgets/bottom_navigation.dart';
 import 'package:flutter_boilerplate_code/src/features/home/presentation/widgets/new_product_card.dart';
 import 'package:flutter_boilerplate_code/src/features/home/presentation/widgets/sale_product_card.dart';
+import 'package:flutter_boilerplate_code/src/resources/app_images.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ScreenHome extends StatelessWidget {
@@ -27,7 +28,7 @@ class ScreenHome extends StatelessWidget {
                         fit: StackFit.expand,
                         children: [
                           Image.asset(
-                            'assets/images/Big Banner.png',
+                            AppImages.banner,
                             fit: BoxFit.cover,
                           ),
                           Positioned(
@@ -75,7 +76,7 @@ class ScreenHome extends StatelessWidget {
                         fit: StackFit.expand,
                         children: [
                           Image.asset(
-                            'assets/images/pexels-photo-911677.png',
+                            AppImages.streetCloths,
                             fit: BoxFit.cover,
                           ),
                           Positioned(
@@ -159,7 +160,7 @@ class ScreenHome extends StatelessWidget {
                         fit: StackFit.expand,
                         children: [
                           Image.asset(
-                            'assets/images/Big Banner.png',
+                            AppImages.banner,
                             fit: BoxFit.cover,
                           ),
                           Positioned(
@@ -215,7 +216,7 @@ class ScreenHome extends StatelessWidget {
                                   children: [
                                     Positioned.fill(
                                       child: Image.asset(
-                                        'assets/images/women.png',
+                                        AppImages.blackDress2,
                                         fit: BoxFit.cover,
                                       ),
                                     ),
@@ -251,7 +252,7 @@ class ScreenHome extends StatelessWidget {
                             children: [
                               Positioned.fill(
                                 child: Image.asset(
-                                  'assets/images/men.png',
+                                  AppImages.men,
                                   fit: BoxFit.cover,
                                 ),
                               ),

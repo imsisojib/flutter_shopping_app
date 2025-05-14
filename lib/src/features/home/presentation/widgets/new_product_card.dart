@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate_code/src/resources/app_images.dart';
 import 'package:flutter_boilerplate_code/src/routes/routes.dart';
 
 class NewProductCard extends StatelessWidget {
@@ -33,7 +34,7 @@ class NewProductCard extends StatelessWidget {
                   borderRadius:
                       const BorderRadius.vertical(top: Radius.circular(16)),
                   child: Image.asset(
-                    'assets/images/image.png',
+                    AppImages.blackDress,
                     height: 250,
                     width: double.infinity,
                     fit: BoxFit.cover,
