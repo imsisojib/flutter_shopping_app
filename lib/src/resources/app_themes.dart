@@ -36,99 +36,103 @@ ThemeData buildLightTheme(BuildContext context) {
 ThemeData buildDarkTheme(BuildContext context) {
   final base = ThemeData.dark();
   return base.copyWith(
-    /*bottomSheetTheme: BottomSheetThemeData(
+      /*bottomSheetTheme: BottomSheetThemeData(
       backgroundColor: AppColors.darkDrawerBackground,
       modalBackgroundColor: Colors.black.withOpacity(0.7),
     ),*/
-    appBarTheme: AppBarTheme(
-      systemOverlayStyle: SystemUiOverlayStyle.dark,
-      color: AppColors.scaffoldColorDark,
-      shadowColor: AppColors.primaryColorDark.withOpacity(.3),
-      elevation: 7,
-      centerTitle: true,
-      iconTheme: const IconThemeData(
-        color: AppColors.secondaryColorDark,
+      appBarTheme: AppBarTheme(
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
+        color: AppColors.scaffoldColorDark,
+        shadowColor: AppColors.primaryColorDark.withOpacity(.3),
+        elevation: 7,
+        centerTitle: true,
+        iconTheme: const IconThemeData(
+          color: AppColors.secondaryColorDark,
+        ),
+        titleTextStyle: GoogleFonts.rubik(
+          fontWeight: FontWeight.normal,
+          fontSize: 18.sp,
+          letterSpacing: 0.2,
+          color: AppColors.secondaryColorDark,
+        ),
       ),
-      titleTextStyle: GoogleFonts.rubik(
-        fontWeight: FontWeight.normal,
-        fontSize: 18.sp,
-        letterSpacing: 0.2,
-        color: AppColors.secondaryColorDark,
+      cardColor: AppColors.darkCardBackground,
+      colorScheme: const ColorScheme.dark(
+        primary: AppColors.primaryColorDark,
+        secondary: AppColors.secondaryColorDark,
+        surface: AppColors.surfaceColorDark,
+        error: AppColors.errorColorDark,
+        onPrimary: AppColors.onPrimaryColorDark,
+        onSecondary: AppColors.onSecondaryColorDark,
+        onBackground: AppColors.onBackgroundColorDark,
+        onSurface: AppColors.onSurfaceColorDark,
+        onError: AppColors.onErrorColorDark,
+        background: AppColors.backgroundColorDark,
       ),
-    ),
-    cardColor: AppColors.darkCardBackground,
-    colorScheme: const ColorScheme.dark(
-      primary: AppColors.primaryColorDark,
-      secondary: AppColors.secondaryColorDark,
-      surface: AppColors.surfaceColorDark,
-      error: AppColors.errorColorDark,
-      onPrimary: AppColors.onPrimaryColorDark,
-      onSecondary: AppColors.onSecondaryColorDark,
-      onBackground: AppColors.onBackgroundColorDark,
-      onSurface: AppColors.onSurfaceColorDark,
-      onError: AppColors.onErrorColorDark,
-      background: AppColors.backgroundColorDark,
-    ),
-    textTheme: _buildDarkTextTheme(base.textTheme),
-    scaffoldBackgroundColor: AppColors.scaffoldColorDark,
-    bottomAppBarTheme: const BottomAppBarTheme(
-      color: AppColors.scaffoldColorDark,
-    ),
-    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      backgroundColor: AppColors.scaffoldColorDark,
-      type: BottomNavigationBarType.fixed,
-      showUnselectedLabels: false,
-      showSelectedLabels: false,
-      selectedIconTheme: IconThemeData(
-        color: Colors.red,
+      textTheme: _buildDarkTextTheme(base.textTheme),
+      scaffoldBackgroundColor: AppColors.scaffoldColorDark,
+      bottomAppBarTheme: const BottomAppBarTheme(
+        color: AppColors.scaffoldColorDark,
       ),
-      unselectedIconTheme: IconThemeData(
-        color: Colors.white,
-      )
-    )
-  );
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          backgroundColor: AppColors.scaffoldColorDark,
+          type: BottomNavigationBarType.fixed,
+          showUnselectedLabels: false,
+          showSelectedLabels: false,
+          selectedIconTheme: IconThemeData(
+            color: Colors.red,
+          ),
+          unselectedIconTheme: IconThemeData(
+            color: Colors.white,
+          )));
 }
 
 TextTheme _buildLightTextTheme(TextTheme base) {
   return base.copyWith(
-    headlineMedium: GoogleFonts.workSans(  //headline4
+    headlineMedium: GoogleFonts.workSans(
       fontWeight: FontWeight.w600,
       fontSize: 34,
       letterSpacing: 0.4,
       height: 0.9,
       color: AppColors.textColorLight,
     ),
-    headlineSmall: GoogleFonts.workSans(  //headline5
-      fontWeight: FontWeight.bold,
-      fontSize: 24,
-      letterSpacing: 0.27,
+    headlineSmall: GoogleFonts.workSans(
+      fontWeight: FontWeight.w600,
+      fontSize: 28,
+      letterSpacing: 0.4,
+      height: 0.9,
       color: AppColors.textColorLight,
     ),
-    headlineLarge: GoogleFonts.workSans(  //headline6
+    headlineLarge: GoogleFonts.workSans(
       fontWeight: FontWeight.w600,
-      fontSize: 20,
+      fontSize: 40,
       letterSpacing: 0.18,
       color: AppColors.textColorLight,
     ),
-    titleSmall: GoogleFonts.workSans(   //subtitle2
+    titleSmall: GoogleFonts.workSans(
+      //subtitle2
       fontWeight: FontWeight.w600,
       fontSize: 14,
       letterSpacing: -0.04,
       color: AppColors.textColorLight,
     ),
-    bodyLarge: GoogleFonts.workSans(  //bodyText1
+    bodyLarge: GoogleFonts.workSans(
+      //bodyText1
       fontWeight: FontWeight.normal,
       fontSize: 16.sp,
       letterSpacing: 0.2,
       color: AppColors.textColorLight,
     ),
-    bodyMedium: GoogleFonts.workSans(  //bodyText2
+
+    //default
+    bodyMedium: GoogleFonts.workSans(
       fontWeight: FontWeight.normal,
       fontSize: 14.sp,
       letterSpacing: -0.05,
       color: AppColors.textColorLight,
     ),
-    bodySmall: GoogleFonts.workSans(  //caption
+    bodySmall: GoogleFonts.workSans(
+      //caption
       fontWeight: FontWeight.normal,
       fontSize: 12,
       letterSpacing: 0.2,
@@ -139,44 +143,51 @@ TextTheme _buildLightTextTheme(TextTheme base) {
 
 TextTheme _buildDarkTextTheme(TextTheme base) {
   return base.copyWith(
-    headlineMedium: GoogleFonts.rubik( //headline4
+    headlineMedium: GoogleFonts.rubik(
+      //headline4
       fontWeight: FontWeight.w600,
       fontSize: 34.sp,
       letterSpacing: 0.4,
       height: 0.9,
       color: AppColors.textColorDark,
     ),
-    headlineSmall: GoogleFonts.rubik( //headline5
+    headlineSmall: GoogleFonts.rubik(
+      //headline5
       fontWeight: FontWeight.bold,
       fontSize: 24.sp,
       letterSpacing: 0.27,
       color: AppColors.textColorDark,
     ),
-    headlineLarge: GoogleFonts.rubik( //headline6
+    headlineLarge: GoogleFonts.rubik(
+      //headline6
       fontWeight: FontWeight.w600,
       fontSize: 20.sp,
       letterSpacing: 0.18,
       color: AppColors.textColorDark,
     ),
-    titleSmall: GoogleFonts.rubik( //subtitle2
+    titleSmall: GoogleFonts.rubik(
+      //subtitle2
       fontWeight: FontWeight.w600,
       fontSize: 14.sp,
       letterSpacing: -0.04,
       color: AppColors.textColorDark,
     ),
-    bodyLarge: GoogleFonts.rubik( //bodyText1
+    bodyLarge: GoogleFonts.rubik(
+      //bodyText1
       fontWeight: FontWeight.normal,
       fontSize: 16.sp,
       letterSpacing: 0.2,
       color: AppColors.textColorDark,
     ),
-    bodyMedium: GoogleFonts.rubik(  //bodyText2
+    bodyMedium: GoogleFonts.rubik(
+      //bodyText2
       fontWeight: FontWeight.normal,
       fontSize: 14.sp,
       letterSpacing: -0.05,
       color: AppColors.textColorDark,
     ),
-    bodySmall: GoogleFonts.rubik( //caption
+    bodySmall: GoogleFonts.rubik(
+      //caption
       fontWeight: FontWeight.normal,
       fontSize: 12.sp,
       letterSpacing: 0.2,
