@@ -14,9 +14,9 @@ class ScreensReviews extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+            padding: EdgeInsets.symmetric(vertical: 16, horizontal: 10),
             child: Text(
-              "Ratings & Reviews",
+              "Ratings&Reviews",
               style: theme.textTheme.titleLarge,
             ),
           ),
@@ -155,7 +155,8 @@ class ScreensReviews extends StatelessWidget {
                           // Date
                           Text(
                             "May 13, 2025",
-                            style: theme.textTheme.bodySmall,
+                            style: theme.textTheme.bodySmall
+                                ?.copyWith(color: Colors.grey),
                           ),
                         ],
                       ),
@@ -176,7 +177,8 @@ class ScreensReviews extends StatelessWidget {
                         children: [
                           Text(
                             "Helpful",
-                            style: theme.textTheme.bodySmall,
+                            style: theme.textTheme.bodySmall
+                                ?.copyWith(color: Colors.grey),
                           ),
                           const SizedBox(width: 4),
                           Icon(
