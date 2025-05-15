@@ -80,7 +80,9 @@ class ScreenProductDetails extends StatelessWidget {
                               onTap: () {
                                 showModalBottomSheet(
                                   context: context,
-                                  isScrollControlled: false,
+                                  isScrollControlled:
+                                      true, // makes it slide up more smoothly
+                                  backgroundColor: Colors.white,
                                   shape: const RoundedRectangleBorder(
                                     borderRadius: BorderRadius.vertical(
                                         top: Radius.circular(16)),
@@ -88,47 +90,96 @@ class ScreenProductDetails extends StatelessWidget {
                                   builder: (BuildContext context) {
                                     return DraggableScrollableSheet(
                                       expand: false,
-                                      initialChildSize: 0.3,
-                                      minChildSize: 0.2,
-                                      maxChildSize: 0.5,
+                                      initialChildSize: 0.4,
+                                      minChildSize: 0.25,
+                                      maxChildSize: 0.75,
                                       builder: (context, scrollController) {
-                                        return Padding(
-                                          padding: const EdgeInsets.all(16),
-                                          child: GridView.builder(
-                                            controller: scrollController,
-                                            itemCount:
-                                                ['XL', 'XLL', 'M', 'S'].length,
-                                            gridDelegate:
-                                                const SliverGridDelegateWithFixedCrossAxisCount(
-                                              crossAxisCount: 3,
-                                              crossAxisSpacing: 12,
-                                              mainAxisSpacing: 12,
-                                              childAspectRatio: 2.5,
-                                            ),
-                                            itemBuilder: (context, index) {
-                                              final size = [
-                                                'XL',
-                                                'XLL',
-                                                'M',
-                                                'S'
-                                              ][index];
-                                              return Container(
+                                        return Column(
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  vertical: 10),
+                                              child: Container(
+                                                width: 40,
+                                                height: 5,
                                                 decoration: BoxDecoration(
-                                                  border: Border.all(
-                                                      color: Colors.grey),
+                                                  color: Colors.grey,
                                                   borderRadius:
-                                                      BorderRadius.circular(8),
-                                                  color: Colors.grey.shade100,
+                                                      BorderRadius.all(
+                                                          Radius.circular(10)),
                                                 ),
-                                                alignment: Alignment.center,
+                                              ),
+                                            ),
+                                            const SizedBox(height: 8),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 16),
+                                              child: Align(
+                                                alignment: Alignment.centerLeft,
                                                 child: Text(
-                                                  size,
-                                                  style: theme
-                                                      .textTheme.bodyMedium,
+                                                  "Select Size",
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .titleMedium!
+                                                      .copyWith(
+                                                          fontWeight:
+                                                              FontWeight.bold),
                                                 ),
-                                              );
-                                            },
-                                          ),
+                                              ),
+                                            ),
+                                            const SizedBox(height: 8),
+                                            Expanded(
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(16),
+                                                child: GridView.builder(
+                                                  controller: scrollController,
+                                                  itemCount: [
+                                                    'XL',
+                                                    'XLL',
+                                                    'M',
+                                                    'S'
+                                                  ].length,
+                                                  gridDelegate:
+                                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                                    crossAxisCount: 3,
+                                                    crossAxisSpacing: 12,
+                                                    mainAxisSpacing: 12,
+                                                    childAspectRatio: 2.5,
+                                                  ),
+                                                  itemBuilder:
+                                                      (context, index) {
+                                                    final size = [
+                                                      'XL',
+                                                      'XLL',
+                                                      'M',
+                                                      'S'
+                                                    ][index];
+                                                    return Container(
+                                                      decoration: BoxDecoration(
+                                                        border: Border.all(
+                                                            color: Colors.grey),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8),
+                                                        color: Colors
+                                                            .grey.shade100,
+                                                      ),
+                                                      alignment:
+                                                          Alignment.center,
+                                                      child: Text(
+                                                        size,
+                                                        style: Theme.of(context)
+                                                            .textTheme
+                                                            .bodyMedium,
+                                                      ),
+                                                    );
+                                                  },
+                                                ),
+                                              ),
+                                            ),
+                                          ],
                                         );
                                       },
                                     );

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate_code/src/resources/app_images.dart';
+import 'package:flutter_boilerplate_code/src/routes/routes.dart';
 
 class ScreensReviews extends StatelessWidget {
   const ScreensReviews({super.key});
@@ -208,10 +209,11 @@ class ScreensReviews extends StatelessWidget {
           ),
         ],
       ),
+
       // write a review section
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          // handle button tap
+          Navigator.pushNamed(context, Routes.writeReviews);
         },
         icon: const Icon(Icons.edit, size: 18),
         label: Text(
