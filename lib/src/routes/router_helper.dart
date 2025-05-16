@@ -25,11 +25,6 @@ class RouterHelper {
     return const ScreensReviews();
   });
 
-  static final Handler _writeReviewsHandler =
-      Handler(handlerFunc: (context, Map<String, dynamic> parameters) {
-    return const WriteReviewPage();
-  });
-
   static final Handler _notFoundHandler =
       Handler(handlerFunc: (context, parameters) => const ScreenError());
 
@@ -49,10 +44,5 @@ class RouterHelper {
     // reviews and rating page
     router.define(Routes.reviews,
         handler: _reviewsHandler, transitionType: TransitionType.inFromBottom);
-
-    // write reviews and rating page
-    router.define(Routes.writeReviews,
-        handler: _writeReviewsHandler,
-        transitionType: TransitionType.inFromBottom);
   }
 }
