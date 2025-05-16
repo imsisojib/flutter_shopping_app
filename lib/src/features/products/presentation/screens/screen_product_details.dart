@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate_code/src/features/products/presentation/widgets/bottomsheet_product_color.dart';
+import 'package:flutter_boilerplate_code/src/features/products/presentation/widgets/bottomsheet_product_size.dart';
+import 'package:flutter_boilerplate_code/src/helpers/widget_helper.dart';
 import 'package:flutter_boilerplate_code/src/resources/app_images.dart';
 import 'package:flutter_boilerplate_code/src/routes/routes.dart';
 
@@ -9,6 +12,12 @@ class ScreenProductDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
+    final List<String> imageList = [
+      AppImages.blackDress,
+      AppImages.blackDress2,
+      AppImages.streetCloths,
+    ];
 
     return Scaffold(
       appBar: AppBar(
@@ -39,14 +48,26 @@ class ScreenProductDetails extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(0),
-                      child: Image.asset(
-                        AppImages.blackDress,
-                        width: double.infinity,
-                        height: 250,
-                        fit: BoxFit.cover,
-                        alignment: Alignment.topCenter,
+                    // Image with carousel part
+                    SizedBox(
+                      height: 250,
+                      child: PageView.builder(
+                        padEnds: false,
+                        controller: PageController(viewportFraction: 0.55),
+                        itemCount: imageList.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 2),
+                            child: ClipRRect(
+                              child: Image.asset(
+                                imageList[index],
+                                width: double.infinity,
+                                fit: BoxFit.cover,
+                                alignment: Alignment.topCenter,
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ),
 
@@ -61,61 +82,8 @@ class ScreenProductDetails extends StatelessWidget {
                             flex: 4,
                             child: GestureDetector(
                               onTap: () {
-                                showModalBottomSheet(
-                                  context: context,
-                                  isScrollControlled: false,
-                                  shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.vertical(
-                                        top: Radius.circular(16)),
-                                  ),
-                                  builder: (BuildContext context) {
-                                    return DraggableScrollableSheet(
-                                      expand: false,
-                                      initialChildSize: 0.3,
-                                      minChildSize: 0.2,
-                                      maxChildSize: 0.5,
-                                      builder: (context, scrollController) {
-                                        return Padding(
-                                          padding: const EdgeInsets.all(16),
-                                          child: GridView.builder(
-                                            controller: scrollController,
-                                            itemCount:
-                                                ['XL', 'XLL', 'M', 'S'].length,
-                                            gridDelegate:
-                                                const SliverGridDelegateWithFixedCrossAxisCount(
-                                              crossAxisCount: 3,
-                                              crossAxisSpacing: 12,
-                                              mainAxisSpacing: 12,
-                                              childAspectRatio: 2.5,
-                                            ),
-                                            itemBuilder: (context, index) {
-                                              final size = [
-                                                'XL',
-                                                'XLL',
-                                                'M',
-                                                'S'
-                                              ][index];
-                                              return Container(
-                                                decoration: BoxDecoration(
-                                                  border: Border.all(
-                                                      color: Colors.grey),
-                                                  borderRadius:
-                                                      BorderRadius.circular(8),
-                                                  color: Colors.grey.shade100,
-                                                ),
-                                                alignment: Alignment.center,
-                                                child: Text(
-                                                  size,
-                                                  style: const TextStyle(
-                                                      fontSize: 14),
-                                                ),
-                                              );
-                                            },
-                                          ),
-                                        );
-                                      },
-                                    );
-                                  },
+                                WidgetHelper.showBottomSheet(
+                                  content: BottomSheetProductSize(),
                                 );
                               },
                               child: Container(
@@ -141,66 +109,8 @@ class ScreenProductDetails extends StatelessWidget {
                             flex: 4,
                             child: GestureDetector(
                               onTap: () {
-                                showModalBottomSheet(
-                                  context: context,
-                                  isScrollControlled: false,
-                                  shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.vertical(
-                                        top: Radius.circular(16)),
-                                  ),
-                                  builder: (BuildContext context) {
-                                    return DraggableScrollableSheet(
-                                      expand: false,
-                                      initialChildSize: 0.3,
-                                      minChildSize: 0.2,
-                                      maxChildSize: 0.5,
-                                      builder: (context, scrollController) {
-                                        return Padding(
-                                          padding: const EdgeInsets.all(16),
-                                          child: GridView.builder(
-                                            controller: scrollController,
-                                            itemCount: [
-                                              'Black',
-                                              'Green',
-                                              'White',
-                                              'Blue'
-                                            ].length,
-                                            gridDelegate:
-                                                const SliverGridDelegateWithFixedCrossAxisCount(
-                                              crossAxisCount: 3,
-                                              crossAxisSpacing: 12,
-                                              mainAxisSpacing: 12,
-                                              childAspectRatio:
-                                                  2.5, // Controls box shape
-                                            ),
-                                            itemBuilder: (context, index) {
-                                              final size = [
-                                                'Black',
-                                                'Green',
-                                                'White',
-                                                'Blue'
-                                              ][index];
-                                              return Container(
-                                                decoration: BoxDecoration(
-                                                  border: Border.all(
-                                                      color: Colors.grey),
-                                                  borderRadius:
-                                                      BorderRadius.circular(8),
-                                                  color: Colors.grey.shade100,
-                                                ),
-                                                alignment: Alignment.center,
-                                                child: Text(
-                                                  size,
-                                                  style: const TextStyle(
-                                                      fontSize: 14),
-                                                ),
-                                              );
-                                            },
-                                          ),
-                                        );
-                                      },
-                                    );
-                                  },
+                                WidgetHelper.showBottomSheet(
+                                  content: BottomSheetProductColor(),
                                 );
                               },
                               child: Container(
@@ -213,11 +123,8 @@ class ScreenProductDetails extends StatelessWidget {
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "Color",
-                                      style: theme.textTheme.bodySmall,
-                                    ),
+                                  children: const [
+                                    Text("Color"),
                                     Icon(Icons.keyboard_arrow_down),
                                   ],
                                 ),
@@ -318,8 +225,8 @@ class ScreenProductDetails extends StatelessWidget {
                           const SizedBox(height: 16),
                           Text(
                             "This lightweight and breathable summer dress is perfect for warm days. Designed with comfort and style in mind.",
-                            style: theme.textTheme.bodySmall
-                                ?.copyWith(color: Colors.black),
+                            style: theme.textTheme.bodyMedium
+                                ?.copyWith(color: Colors.black54),
                           ),
                         ],
                       ),
@@ -327,6 +234,60 @@ class ScreenProductDetails extends StatelessWidget {
 
                     const SizedBox(height: 20),
                   ],
+                ),
+
+                // Shipping info part
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 14),
+                    decoration: const BoxDecoration(
+                      border: Border(
+                        top: BorderSide(color: Colors.grey, width: 0.5),
+                        bottom: BorderSide(color: Colors.grey, width: 0.5),
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Shipping Info",
+                          style: theme.textTheme.bodyMedium,
+                        ),
+                        Icon(Icons.arrow_forward_ios,
+                            size: 16, color: Colors.grey),
+                      ],
+                    ),
+                  ),
+                ),
+
+                // support part
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 14),
+                    decoration: const BoxDecoration(
+                      border: Border(
+                        top: BorderSide(color: Colors.grey, width: 1),
+                        bottom: BorderSide(color: Colors.grey, width: 0.5),
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Support",
+                          style: theme.textTheme.bodyMedium,
+                        ),
+                        Icon(Icons.arrow_forward_ios,
+                            size: 16, color: Colors.grey),
+                      ],
+                    ),
+                  ),
                 ),
               ]),
             ),

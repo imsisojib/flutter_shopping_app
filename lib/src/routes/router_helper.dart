@@ -2,7 +2,8 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter_boilerplate_code/src/features/errors/presentation/screens/screen_error.dart';
 import 'package:flutter_boilerplate_code/src/features/products/presentation/screens/screen_product_details.dart';
 import 'package:flutter_boilerplate_code/src/features/home/presentation/screens/screen_home.dart';
-import 'package:flutter_boilerplate_code/src/features/products/presentation/screens/screens_review.dart';
+import 'package:flutter_boilerplate_code/src/features/products/presentation/screens/screen_review.dart';
+import 'package:flutter_boilerplate_code/src/features/products/presentation/screens/screen_write_a_review.dart';
 import 'package:flutter_boilerplate_code/src/routes/routes.dart';
 
 class RouterHelper {
