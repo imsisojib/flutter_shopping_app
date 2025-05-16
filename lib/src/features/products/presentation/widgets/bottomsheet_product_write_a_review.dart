@@ -28,7 +28,7 @@ class BottomSheetProductWriteAReview extends StatelessWidget {
                         [
                           Center(
                             child: Text("What is your rate?",
-                                style: theme.textTheme.titleLarge),
+                                style: theme.textTheme.titleMedium),
                           ),
                           const SizedBox(height: 12),
                           Row(
@@ -37,7 +37,7 @@ class BottomSheetProductWriteAReview extends StatelessWidget {
                               5,
                               (index) => const Icon(
                                 Icons.star_border,
-                                size: 60,
+                                size: 36,
                                 color: Colors.grey,
                               ),
                             ),
@@ -47,7 +47,7 @@ class BottomSheetProductWriteAReview extends StatelessWidget {
                             child: Text(
                               "Please share your opinion \n     about the product",
                               textAlign: TextAlign.center,
-                              style: theme.textTheme.titleLarge,
+                              style: theme.textTheme.titleMedium,
                             ),
                           ),
                           const SizedBox(height: 20),
@@ -75,10 +75,13 @@ class BottomSheetProductWriteAReview extends StatelessWidget {
                                     radius: 30,
                                     backgroundColor: Colors.red,
                                     child: const Icon(Icons.camera_alt,
-                                        color: Colors.white),
+                                        color: Colors.white, size: 26),
                                   ),
-                                  const SizedBox(height: 8),
-                                  const Text("Add your photo"),
+                                  SizedBox(height: 8),
+                                  Text(
+                                    "Add your photo",
+                                    style: theme.textTheme.labelSmall,
+                                  ),
                                 ],
                               ),
                             ),
@@ -96,21 +99,23 @@ class BottomSheetProductWriteAReview extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(16),
               child: SizedBox(
-                width: double.infinity,
+                width: 343,
+                height: 48,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.red,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
+                      borderRadius: BorderRadius.circular(25),
                     ),
                     padding: const EdgeInsets.symmetric(vertical: 16),
                   ),
                   onPressed: () {
                     // Submit logic
                   },
-                  child: const Text(
+                  child: Text(
                     "SEND REVIEW",
-                    style: TextStyle(color: Colors.white, fontSize: 16),
+                    style: theme.textTheme.titleMedium
+                        ?.copyWith(color: Colors.white),
                   ),
                 ),
               ),

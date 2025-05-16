@@ -29,7 +29,7 @@ class ScreenProductDetails extends StatelessWidget {
         ),
         title: Text(
           "Summer Dress",
-          style: theme.textTheme.titleLarge,
+          style: theme.textTheme.bodyLarge,
         ),
         centerTitle: true,
         actions: [
