@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate_code/src/features/categories/presentation/widgets/categories_card.dart';
+import 'package:flutter_boilerplate_code/src/resources/app_images.dart';
 
 class ScreenCategory extends StatelessWidget {
   const ScreenCategory({super.key});
@@ -71,53 +73,31 @@ class ScreenCategory extends StatelessWidget {
             SizedBox(height: 20),
 
             // Categories name cards
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(8),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 6,
-                    offset: Offset(0, 2),
-                  ),
-                ],
-              ),
-              height: 100,
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'New',
-                            style: theme.textTheme.titleMedium,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+            CategoryCard(
+              title: 'New',
+              imagePath: AppImages.blackDress,
+            ),
 
-                  // Right image part
-                  Expanded(
-                    flex: 1,
-                    child: ClipRRect(
-                      child: Image.asset(
-                        'assets/images/image.png',
-                        fit: BoxFit.cover,
-                        height: double.infinity,
-                        width: double.infinity,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            )
+            SizedBox(height: 20),
+
+            CategoryCard(
+              title: 'Cloths',
+              imagePath: AppImages.streetCloths,
+            ),
+
+            SizedBox(height: 20),
+
+            CategoryCard(
+              title: 'Shoes',
+              imagePath: AppImages.men,
+            ),
+
+            SizedBox(height: 20),
+
+            CategoryCard(
+              title: 'Accesories',
+              imagePath: AppImages.banner,
+            ),
           ],
         ),
       ),
