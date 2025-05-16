@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate_code/src/features/products/presentation/widgets/bottomsheet_product_color.dart';
+import 'package:flutter_boilerplate_code/src/features/products/presentation/widgets/bottomsheet_product_size.dart';
+import 'package:flutter_boilerplate_code/src/helpers/widget_helper.dart';
 import 'package:flutter_boilerplate_code/src/resources/app_images.dart';
 import 'package:flutter_boilerplate_code/src/routes/routes.dart';
 
@@ -49,6 +52,7 @@ class ScreenProductDetails extends StatelessWidget {
                     SizedBox(
                       height: 250,
                       child: PageView.builder(
+                        padEnds: false,
                         controller: PageController(viewportFraction: 0.55),
                         itemCount: imageList.length,
                         itemBuilder: (context, index) {
@@ -78,112 +82,8 @@ class ScreenProductDetails extends StatelessWidget {
                             flex: 4,
                             child: GestureDetector(
                               onTap: () {
-                                showModalBottomSheet(
-                                  context: context,
-                                  isScrollControlled:
-                                      true, // makes it slide up more smoothly
-                                  backgroundColor: Colors.white,
-                                  shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.vertical(
-                                        top: Radius.circular(16)),
-                                  ),
-                                  builder: (BuildContext context) {
-                                    return DraggableScrollableSheet(
-                                      expand: false,
-                                      initialChildSize: 0.4,
-                                      minChildSize: 0.25,
-                                      maxChildSize: 0.75,
-                                      builder: (context, scrollController) {
-                                        return Column(
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(
-                                                  vertical: 10),
-                                              child: Container(
-                                                width: 40,
-                                                height: 5,
-                                                decoration: BoxDecoration(
-                                                  color: Colors.grey,
-                                                  borderRadius:
-                                                      BorderRadius.all(
-                                                          Radius.circular(10)),
-                                                ),
-                                              ),
-                                            ),
-                                            const SizedBox(height: 8),
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 16),
-                                              child: Align(
-                                                alignment: Alignment.centerLeft,
-                                                child: Text(
-                                                  "Select Size",
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .titleMedium!
-                                                      .copyWith(
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                ),
-                                              ),
-                                            ),
-                                            const SizedBox(height: 8),
-                                            Expanded(
-                                              child: Padding(
-                                                padding:
-                                                    const EdgeInsets.all(16),
-                                                child: GridView.builder(
-                                                  controller: scrollController,
-                                                  itemCount: [
-                                                    'XL',
-                                                    'XLL',
-                                                    'M',
-                                                    'S'
-                                                  ].length,
-                                                  gridDelegate:
-                                                      const SliverGridDelegateWithFixedCrossAxisCount(
-                                                    crossAxisCount: 3,
-                                                    crossAxisSpacing: 12,
-                                                    mainAxisSpacing: 12,
-                                                    childAspectRatio: 2.5,
-                                                  ),
-                                                  itemBuilder:
-                                                      (context, index) {
-                                                    final size = [
-                                                      'XL',
-                                                      'XLL',
-                                                      'M',
-                                                      'S'
-                                                    ][index];
-                                                    return Container(
-                                                      decoration: BoxDecoration(
-                                                        border: Border.all(
-                                                            color: Colors.grey),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8),
-                                                        color: Colors
-                                                            .grey.shade100,
-                                                      ),
-                                                      alignment:
-                                                          Alignment.center,
-                                                      child: Text(
-                                                        size,
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .bodyMedium,
-                                                      ),
-                                                    );
-                                                  },
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    );
-                                  },
+                                WidgetHelper.showBottomSheet(
+                                  content: BottomSheetProductSize(),
                                 );
                               },
                               child: Container(
@@ -209,66 +109,8 @@ class ScreenProductDetails extends StatelessWidget {
                             flex: 4,
                             child: GestureDetector(
                               onTap: () {
-                                showModalBottomSheet(
-                                  context: context,
-                                  isScrollControlled: false,
-                                  shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.vertical(
-                                        top: Radius.circular(16)),
-                                  ),
-                                  builder: (BuildContext context) {
-                                    return DraggableScrollableSheet(
-                                      expand: false,
-                                      initialChildSize: 0.3,
-                                      minChildSize: 0.2,
-                                      maxChildSize: 0.5,
-                                      builder: (context, scrollController) {
-                                        return Padding(
-                                          padding: const EdgeInsets.all(16),
-                                          child: GridView.builder(
-                                            controller: scrollController,
-                                            itemCount: [
-                                              'Black',
-                                              'Green',
-                                              'White',
-                                              'Blue'
-                                            ].length,
-                                            gridDelegate:
-                                                const SliverGridDelegateWithFixedCrossAxisCount(
-                                              crossAxisCount: 3,
-                                              crossAxisSpacing: 12,
-                                              mainAxisSpacing: 12,
-                                              childAspectRatio:
-                                                  2.5, // Controls box shape
-                                            ),
-                                            itemBuilder: (context, index) {
-                                              final size = [
-                                                'Black',
-                                                'Green',
-                                                'White',
-                                                'Blue'
-                                              ][index];
-                                              return Container(
-                                                decoration: BoxDecoration(
-                                                  border: Border.all(
-                                                      color: Colors.grey),
-                                                  borderRadius:
-                                                      BorderRadius.circular(8),
-                                                  color: Colors.grey.shade100,
-                                                ),
-                                                alignment: Alignment.center,
-                                                child: Text(
-                                                  size,
-                                                  style: theme
-                                                      .textTheme.bodyMedium,
-                                                ),
-                                              );
-                                            },
-                                          ),
-                                        );
-                                      },
-                                    );
-                                  },
+                                WidgetHelper.showBottomSheet(
+                                  content: BottomSheetProductColor(),
                                 );
                               },
                               child: Container(
@@ -281,11 +123,8 @@ class ScreenProductDetails extends StatelessWidget {
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "Color",
-                                      style: theme.textTheme.bodySmall,
-                                    ),
+                                  children: const [
+                                    Text("Color"),
                                     Icon(Icons.keyboard_arrow_down),
                                   ],
                                 ),

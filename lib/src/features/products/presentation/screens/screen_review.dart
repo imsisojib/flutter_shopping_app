@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate_code/src/features/products/presentation/widgets/bottomsheet_product_write_a_review.dart';
+import 'package:flutter_boilerplate_code/src/helpers/widget_helper.dart';
 import 'package:flutter_boilerplate_code/src/resources/app_images.dart';
 import 'package:flutter_boilerplate_code/src/routes/routes.dart';
 
@@ -213,7 +215,9 @@ class ScreensReviews extends StatelessWidget {
       // write a review section
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          Navigator.pushNamed(context, Routes.writeReviews);
+          WidgetHelper.showBottomSheet(
+            content: BottomSheetProductWriteAReview(),
+          );
         },
         icon: const Icon(Icons.edit, size: 18),
         label: Text(
