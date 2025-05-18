@@ -11,7 +11,9 @@ class ScreenCategoryList extends StatelessWidget {
         leading: Icon(Icons.arrow_back),
         title: Text('Categories'),
         centerTitle: true,
+        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.search))],
       ),
+      body: Text('data'),
     );
   }
 }
