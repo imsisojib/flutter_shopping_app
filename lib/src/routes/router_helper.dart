@@ -1,6 +1,7 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/screens/screen_category.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/screens/screen_category_list.dart';
+import 'package:flutter_boilerplate_code/src/features/categories/presentation/screens/screen_category_women_tops.dart';
 import 'package:flutter_boilerplate_code/src/features/errors/presentation/screens/screen_error.dart';
 import 'package:flutter_boilerplate_code/src/features/products/presentation/screens/screen_product_details.dart';
 import 'package:flutter_boilerplate_code/src/features/home/presentation/screens/screen_home.dart';
@@ -36,6 +37,11 @@ class RouterHelper {
     return const ScreenCategoryList();
   });
 
+  static final Handler _categoriesWomenTopsHandler =
+      Handler(handlerFunc: (context, Map<String, dynamic> parameters) {
+    return const ScreenCategoryWomenTops();
+  });
+
   static final Handler _notFoundHandler =
       Handler(handlerFunc: (context, parameters) => const ScreenError());
 
@@ -64,6 +70,11 @@ class RouterHelper {
     // Categories List page
     router.define(Routes.categoriesList,
         handler: _categoriesListHandler,
+        transitionType: TransitionType.inFromBottom);
+
+    // Categories Women Tops page
+    router.define(Routes.categoriesWomenTops,
+        handler: _categoriesWomenTopsHandler,
         transitionType: TransitionType.inFromBottom);
   }
 }

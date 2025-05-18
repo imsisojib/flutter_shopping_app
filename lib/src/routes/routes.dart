@@ -4,4 +4,5 @@ class Routes {
   static const String reviews = "/reviews";
   static const String categories = "/categories";
   static const String categoriesList = "/categoriesList";
+  static const String categoriesWomenTops = "/categoriesWomenTops";
 }
