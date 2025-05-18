@@ -31,7 +31,7 @@ class CategoryCard extends StatelessWidget {
           Expanded(
             flex: 1,
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(20.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,

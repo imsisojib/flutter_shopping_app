@@ -1,5 +1,6 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/screens/screen_category.dart';
+import 'package:flutter_boilerplate_code/src/features/categories/presentation/screens/screen_category_list.dart';
 import 'package:flutter_boilerplate_code/src/features/errors/presentation/screens/screen_error.dart';
 import 'package:flutter_boilerplate_code/src/features/products/presentation/screens/screen_product_details.dart';
 import 'package:flutter_boilerplate_code/src/features/home/presentation/screens/screen_home.dart';
@@ -30,6 +31,11 @@ class RouterHelper {
     return const ScreenCategory();
   });
 
+  static final Handler _categoriesListHandler =
+      Handler(handlerFunc: (context, Map<String, dynamic> parameters) {
+    return const ScreenCategoryList();
+  });
+
   static final Handler _notFoundHandler =
       Handler(handlerFunc: (context, parameters) => const ScreenError());
 
@@ -53,6 +59,11 @@ class RouterHelper {
     // Categories page
     router.define(Routes.categories,
         handler: _categoriesHandler,
+        transitionType: TransitionType.inFromBottom);
+
+    // Categories List page
+    router.define(Routes.categoriesList,
+        handler: _categoriesListHandler,
         transitionType: TransitionType.inFromBottom);
   }
 }
