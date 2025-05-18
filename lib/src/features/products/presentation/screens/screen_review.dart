@@ -5,6 +5,9 @@ import 'package:flutter_boilerplate_code/src/helpers/widget_helper.dart';
 import 'package:flutter_boilerplate_code/src/resources/app_images.dart';
 import 'package:flutter_boilerplate_code/src/routes/routes.dart';
 
+import '../widgets/product_rating_bar.dart';
+import '../widgets/product_review_card.dart';
+
 class ScreensReviews extends StatelessWidget {
   const ScreensReviews({super.key});
 
@@ -69,11 +72,11 @@ class ScreensReviews extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   child: Column(
                     children: [
-                      _buildRatingBar(0.9),
-                      _buildRatingBar(0.7),
-                      _buildRatingBar(0.4),
-                      _buildRatingBar(0.2),
-                      _buildRatingBar(0.1),
+                      buildRatingBar(0.9),
+                      buildRatingBar(0.7),
+                      buildRatingBar(0.4),
+                      buildRatingBar(0.2),
+                      buildRatingBar(0.1),
                     ],
                   ),
                 ),
@@ -125,9 +128,10 @@ class ScreensReviews extends StatelessWidget {
             ),
 
             // the review section
-            _reviewCard(context),
-            _reviewCard(context),
-            _reviewCard(context), _reviewCard(context),
+            reviewCard(context),
+            reviewCard(context),
+            reviewCard(context),
+            reviewCard(context),
           ]))
         ],
       ),
@@ -152,125 +156,4 @@ class ScreensReviews extends StatelessWidget {
       ),
     );
   }
-}
-
-Widget _buildRatingBar(double value) {
-  return Container(
-    margin: const EdgeInsets.symmetric(vertical: 2),
-    width: 114,
-    height: 8,
-    child: FractionallySizedBox(
-      alignment: Alignment.centerLeft,
-      widthFactor: value,
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.orange,
-          borderRadius: BorderRadius.circular(5),
-        ),
-      ),
-    ),
-  );
-}
-
-Widget _reviewCard(context) {
-  final theme = Theme.of(context);
-  return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-    child: Container(
-      margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
-      child: Stack(
-        children: [
-          // review card
-          Container(
-            padding: const EdgeInsets.all(16),
-            margin: const EdgeInsets.only(left: 24, top: 12),
-            decoration: BoxDecoration(
-              color: Colors.grey[100],
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: Colors.grey.shade300),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 8),
-
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // name and rating
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Jane Doe",
-                            style: theme.textTheme.titleMedium,
-                          ),
-                          const SizedBox(height: 4),
-                          Row(
-                            children: List.generate(5, (index) {
-                              return const Icon(
-                                Icons.star,
-                                size: 16,
-                                color: Colors.orange,
-                              );
-                            }),
-                          ),
-                        ],
-                      ),
-                    ),
-                    // Date
-                    Text(
-                      "May 13, 2025",
-                      style: theme.textTheme.bodySmall
-                          ?.copyWith(color: Colors.grey),
-                    ),
-                  ],
-                ),
-
-                const SizedBox(height: 12),
-
-                // Review Description
-                Text(
-                  "The product is really good and fits perfectly. The material is soft and comfortable to wear. Highly recommended!",
-                  style: theme.textTheme.bodySmall,
-                ),
-
-                const SizedBox(height: 12),
-
-                // helpful icon part
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      "Helpful",
-                      style: theme.textTheme.bodySmall
-                          ?.copyWith(color: Colors.grey),
-                    ),
-                    const SizedBox(width: 4),
-                    Icon(
-                      Icons.thumb_up_alt_outlined,
-                      size: 18,
-                      color: Colors.grey[600],
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-
-          // circular profile image (overlapping top-left corner)
-          Positioned(
-            top: 0,
-            left: 0,
-            child: CircleAvatar(
-              radius: 20,
-              backgroundColor: Colors.white,
-              backgroundImage: const AssetImage(AppImages.blackDress2),
-            ),
-          ),
-        ],
-      ),
-    ),
-  );
 }
