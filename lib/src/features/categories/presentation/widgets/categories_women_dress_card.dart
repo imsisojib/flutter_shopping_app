@@ -1,83 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate_code/src/resources/app_images.dart';
-
-class ProductModel {
-  final String title;
-  final String company;
-  final String rating;
-  final String price;
-  final String image;
-
-  ProductModel({
-    required this.title,
-    required this.company,
-    required this.rating,
-    required this.price,
-    required this.image,
-  });
-}
-
-final List<ProductModel> productList = [
-  ProductModel(
-    title: 'T-shirts',
-    company: 'Mango',
-    rating: '5',
-    price: '23',
-    image: AppImages.streetCloths,
-  ),
-  ProductModel(
-    title: 'Crop tops',
-    company: 'Dorothy Perkins',
-    rating: '4',
-    price: '20',
-    image: AppImages.blackDress2,
-  ),
-  ProductModel(
-    title: 'Sleeveless',
-    company: 'LOST Ink',
-    rating: '5',
-    price: '43',
-    image: AppImages.banner,
-  ),
-  ProductModel(
-    title: 'Blouses',
-    company: 'Topshop',
-    rating: '2',
-    price: '32',
-    image: AppImages.blackDress2,
-  ),
-  ProductModel(
-    title: 'Pullover',
-    company: 'Topshop',
-    rating: '4',
-    price: '25',
-    image: AppImages.blackDress,
-  ),
-  ProductModel(
-    title: 'T-shirts',
-    company: 'Mango',
-    rating: '5',
-    price: '23',
-    image: AppImages.streetCloths,
-  ),
-  ProductModel(
-    title: 'Crop tops',
-    company: 'Dorothy Perkins',
-    rating: '4',
-    price: '20',
-    image: AppImages.blackDress2,
-  ),
-  ProductModel(
-    title: 'Sleeveless',
-    company: 'LOST Ink',
-    rating: '5',
-    price: '43',
-    image: AppImages.banner,
-  ),
-];
+import 'package:flutter_boilerplate_code/src/features/categories/data/women_tops_card.dart';
 
 class DressCard extends StatelessWidget {
-  final ProductModel product;
+  final WomenDressCard product;
 
   const DressCard({super.key, required this.product});
 

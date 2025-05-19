@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/data/women_tops_list.dart';
+import 'package:flutter_boilerplate_code/src/features/categories/presentation/providers/provider_women_dress_list.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/providers/provider_women_tops_list.dart';
 import 'package:flutter_boilerplate_code/src/resources/app_images.dart';
 import 'package:provider/provider.dart';
@@ -20,6 +21,7 @@ class _ScreenCategoryWomenTopsState extends State<ScreenCategoryWomenTops> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((callback) {
       context.read<ProviderWomenTopsList>().fetchWomenTopsList();
+      context.read<ProviderWomenDressList>().fetchWomenDressList();
     });
     super.initState();
   }
@@ -113,13 +115,19 @@ class _ScreenCategoryWomenTopsState extends State<ScreenCategoryWomenTops> {
               ),
             ),
           ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) {
-                return DressCard(product: productList[index]);
-              },
-              childCount: productList.length,
-            ),
+          Consumer<ProviderWomenDressList>(
+            builder: (_, ProviderWomenDressList, child) {
+              final productList = ProviderWomenDressList.womenTopsCard;
+
+              return SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    return DressCard(product: productList[index]);
+                  },
+                  childCount: productList.length,
+                ),
+              );
+            },
           ),
         ],
       )),

@@ -3,6 +3,7 @@ import 'package:flutter_boilerplate_code/my_app.dart';
 import 'package:flutter_boilerplate_code/src/core/application/token_service.dart';
 import 'package:flutter_boilerplate_code/src/core/domain/interfaces/interface_cache_repository.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/providers/provider_categories.dart';
+import 'package:flutter_boilerplate_code/src/features/categories/presentation/providers/provider_women_dress_list.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/providers/provider_women_tops_list.dart';
 import 'package:flutter_boilerplate_code/src/features/home/presentation/providers/provider_common.dart';
 import 'di_container.dart' as di;
@@ -25,6 +26,8 @@ void main() async {
             create: (context) => di.sl<ProviderCategories>()),
         ChangeNotifierProvider(
             create: (context) => di.sl<ProviderWomenTopsList>()),
+        ChangeNotifierProvider(
+            create: (context) => di.sl<ProviderWomenDressList>()),
       ],
       child: const MyApp(),
     ),
