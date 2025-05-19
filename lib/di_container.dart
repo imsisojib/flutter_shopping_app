@@ -6,6 +6,7 @@ import 'package:flutter_boilerplate_code/src/core/data/repositories/cache_reposi
 import 'package:flutter_boilerplate_code/src/core/domain/interfaces/interface_api_interceptor.dart';
 import 'package:flutter_boilerplate_code/src/core/domain/interfaces/interface_cache_repository.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/providers/provider_categories.dart';
+import 'package:flutter_boilerplate_code/src/features/categories/presentation/providers/provider_women_tops_list.dart';
 import 'package:flutter_boilerplate_code/src/features/home/presentation/providers/provider_common.dart';
 import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
@@ -36,6 +37,9 @@ Future<void> init() async {
   );
   sl.registerFactory(
     () => ProviderCategories(),
+  );
+  sl.registerFactory(
+    () => ProviderWomenTopsList(),
   );
 
   //interceptors

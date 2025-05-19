@@ -1,29 +1,32 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate_code/src/features/categories/data/women_tops_list.dart';
+import 'package:flutter_boilerplate_code/src/features/categories/presentation/providers/provider_women_tops_list.dart';
 import 'package:flutter_boilerplate_code/src/resources/app_images.dart';
+import 'package:provider/provider.dart';
 
 import '../widgets/categories_women_dress_card.dart';
 
-class ScreenCategoryWomenTops extends StatelessWidget {
+class ScreenCategoryWomenTops extends StatefulWidget {
   const ScreenCategoryWomenTops({super.key});
+
+  @override
+  State<ScreenCategoryWomenTops> createState() =>
+      _ScreenCategoryWomenTopsState();
+}
+
+class _ScreenCategoryWomenTopsState extends State<ScreenCategoryWomenTops> {
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((callback) {
+      context.read<ProviderWomenTopsList>().fetchWomenTopsList();
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final List<String> items = [
-      'T-shirts',
-      'Crop tops',
-      'Sleeveless',
-      'Blouses',
-      'Shirt',
-      'Pullover',
-      'T-shirts',
-      'Crop tops',
-      'Sleeveless',
-      'Blouses',
-      'Shirt',
-      'Pullover'
-    ];
 
     return Scaffold(
       appBar: AppBar(
@@ -36,35 +39,41 @@ class ScreenCategoryWomenTops extends StatelessWidget {
           child: CustomScrollView(
         physics: BouncingScrollPhysics(),
         slivers: [
-          SliverToBoxAdapter(
-              child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 5),
-            child: SizedBox(
-              height: 30,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                itemCount: items.length,
-                itemBuilder: (context, index) {
-                  final item = items[index];
-                  return Container(
-                      width: 100,
-                      margin: const EdgeInsets.only(right: 12),
-                      decoration: BoxDecoration(
-                        color: Colors.black87,
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                      child: Center(
-                        child: Text(
-                          '$item',
-                          style: theme.textTheme.bodyMedium
-                              ?.copyWith(color: Colors.white),
-                        ),
-                      ));
-                },
-              ),
-            ),
-          )),
+          Consumer<ProviderWomenTopsList>(
+            builder: (_, ProviderWomenTopsList, child) {
+              final womenTopsList = ProviderWomenTopsList.womenTopsList;
+              return SliverToBoxAdapter(
+                  child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 5),
+                child: SizedBox(
+                  height: 30,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    itemCount: womenTopsList.length,
+                    itemBuilder: (context, index) {
+                      final item = womenTopsList[index];
+                      return Container(
+                          width: 100,
+                          margin: const EdgeInsets.only(right: 12),
+                          decoration: BoxDecoration(
+                            color: Colors.black87,
+                            borderRadius: BorderRadius.circular(25),
+                          ),
+                          child: Center(
+                            child: Text(
+                              womenTopsList[index].title,
+                              style: theme.textTheme.bodyMedium
+                                  ?.copyWith(color: Colors.white),
+                            ),
+                          ));
+                    },
+                  ),
+                ),
+              ));
+            },
+          ),
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
