@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/data/category.dart';
+import 'package:flutter_boilerplate_code/src/features/categories/data/category_list.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/providers/provider_categories.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/widgets/categories_card.dart';
 import 'package:flutter_boilerplate_code/src/features/home/presentation/widgets/bottom_navigation.dart';
@@ -40,33 +41,36 @@ class _ScreenCategoryState extends State<ScreenCategory> {
       body: Consumer<ProviderCategories>(
         builder: (_, providerCategories, child) {
           return CustomScrollView(
+            physics: BouncingScrollPhysics(),
             slivers: [
+              SliverToBoxAdapter(
+                child: SizedBox(
+                  height: 60,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 25, vertical: 20),
+                    itemCount: categories.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(right: 120),
+                        child: Text(categories[index],
+                            style: theme.textTheme.titleSmall),
+                      );
+                    },
+                  ),
+                ),
+              ),
               SliverPadding(
-                padding: EdgeInsets.all(20),
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 sliver: SliverList(
                   delegate: SliverChildListDelegate(
                     [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text('Women', style: theme.textTheme.titleSmall),
-                          Text(
-                            'Men',
-                            style: theme.textTheme.titleSmall,
-                          ),
-                          Text(
-                            'Kids',
-                            style: theme.textTheme.titleSmall,
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 16),
-
                       // red card part
 
                       Container(
                         padding:
-                            EdgeInsets.symmetric(horizontal: 70, vertical: 25),
+                            EdgeInsets.symmetric(horizontal: 70, vertical: 20),
                         decoration: BoxDecoration(
                           color: Colors.red,
                           borderRadius: BorderRadius.circular(8),
