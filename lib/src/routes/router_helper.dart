@@ -1,11 +1,14 @@
 import 'package:fluro/fluro.dart';
+import 'package:flutter_boilerplate_code/src/features/cart/presentation/screens/screen_cart.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/screens/screen_category.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/screens/screen_category_list.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/screens/screen_category_women_tops.dart';
 import 'package:flutter_boilerplate_code/src/features/errors/presentation/screens/screen_error.dart';
+import 'package:flutter_boilerplate_code/src/features/favourite/presentation/screens/screen_favourite.dart';
 import 'package:flutter_boilerplate_code/src/features/products/presentation/screens/screen_product_details.dart';
 import 'package:flutter_boilerplate_code/src/features/home/presentation/screens/screen_home.dart';
 import 'package:flutter_boilerplate_code/src/features/products/presentation/screens/screen_review.dart';
+import 'package:flutter_boilerplate_code/src/features/profile/presentation/screens/screen_profile.dart';
 import 'package:flutter_boilerplate_code/src/routes/routes.dart';
 
 class RouterHelper {
@@ -16,6 +19,22 @@ class RouterHelper {
       Handler(handlerFunc: (context, Map<String, dynamic> parameters) {
     return const ScreenHome();
   });
+  static final Handler _cartScreenHandler =
+      Handler(handlerFunc: (context, Map<String, dynamic> parameters) {
+    return const ScreenCart();
+  });
+  static final Handler _favouriteScreenHandler =
+      Handler(handlerFunc: (context, Map<String, dynamic> parameters) {
+    return const ScreenFavourite();
+  });
+  static final Handler _profileScreenHandler =
+      Handler(handlerFunc: (context, Map<String, dynamic> parameters) {
+    return const ScreenProfile();
+  });
+  static final Handler _categoriesHandler =
+      Handler(handlerFunc: (context, Map<String, dynamic> parameters) {
+    return const ScreenCategory();
+  });
 
   static final Handler _productDetailsHandler =
       Handler(handlerFunc: (context, Map<String, dynamic> parameters) {
@@ -25,11 +44,6 @@ class RouterHelper {
   static final Handler _reviewsHandler =
       Handler(handlerFunc: (context, Map<String, dynamic> parameters) {
     return const ScreensReviews();
-  });
-
-  static final Handler _categoriesHandler =
-      Handler(handlerFunc: (context, Map<String, dynamic> parameters) {
-    return const ScreenCategory();
   });
 
   static final Handler _categoriesListHandler =
@@ -49,32 +63,60 @@ class RouterHelper {
     router.notFoundHandler = _notFoundHandler;
 
     //main-nav flow
-    router.define(Routes.homeScreen,
-        handler: _homeScreenHandler,
-        transitionType: TransitionType.inFromBottom);
+    router.define(
+      Routes.homeScreen,
+      handler: _homeScreenHandler,
+      transitionType: TransitionType.fadeIn,
+    );
 
     // product details page
-    router.define(Routes.productDetails,
-        handler: _productDetailsHandler,
-        transitionType: TransitionType.inFromBottom);
+    router.define(
+      Routes.productDetails,
+      handler: _productDetailsHandler,
+      transitionType: TransitionType.inFromBottom,
+    );
 
     // reviews and rating page
-    router.define(Routes.reviews,
-        handler: _reviewsHandler, transitionType: TransitionType.inFromBottom);
+    router.define(
+      Routes.reviews,
+      handler: _reviewsHandler,
+      transitionType: TransitionType.inFromBottom,
+    );
 
     // Categories page
-    router.define(Routes.categories,
-        handler: _categoriesHandler,
-        transitionType: TransitionType.inFromBottom);
+    router.define(
+      Routes.categories,
+      handler: _categoriesHandler,
+      transitionType: TransitionType.fadeIn,
+    );
 
     // Categories List page
-    router.define(Routes.categoriesList,
-        handler: _categoriesListHandler,
-        transitionType: TransitionType.inFromBottom);
+    router.define(
+      Routes.categoriesList,
+      handler: _categoriesListHandler,
+      transitionType: TransitionType.cupertino,
+    );
 
     // Categories Women Tops page
-    router.define(Routes.categoriesWomenTops,
-        handler: _categoriesWomenTopsHandler,
-        transitionType: TransitionType.inFromBottom);
+    router.define(
+      Routes.categoriesWomenTops,
+      handler: _categoriesWomenTopsHandler,
+      transitionType: TransitionType.fadeIn,
+    );
+    router.define(
+      Routes.cart,
+      handler: _cartScreenHandler,
+      transitionType: TransitionType.fadeIn,
+    );
+    router.define(
+      Routes.favourite,
+      handler: _favouriteScreenHandler,
+      transitionType: TransitionType.fadeIn,
+    );
+    router.define(
+      Routes.profile,
+      handler: _profileScreenHandler,
+      transitionType: TransitionType.fadeIn,
+    );
   }
 }
