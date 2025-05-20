@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/data/women_tops_list.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/providers/provider_women_dress_list.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/providers/provider_women_tops_list.dart';
+import 'package:flutter_boilerplate_code/src/features/categories/presentation/widgets/bottomshet_product_sort.dart';
 import 'package:flutter_boilerplate_code/src/resources/app_images.dart';
 import 'package:provider/provider.dart';
 
@@ -18,6 +19,8 @@ class ScreenCategoryWomenTops extends StatefulWidget {
 
 class _ScreenCategoryWomenTopsState extends State<ScreenCategoryWomenTops> {
   bool isGridView = false;
+  String? selectedSortOption;
+
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((callback) {
@@ -96,15 +99,35 @@ class _ScreenCategoryWomenTopsState extends State<ScreenCategoryWomenTops> {
                       ],
                     ),
                   ),
-                  Row(
-                    children: [
-                      Icon(Icons.low_priority),
-                      SizedBox(width: 6),
-                      Text(
-                        'Price lowest to high',
-                        style: theme.textTheme.labelSmall,
-                      ),
-                    ],
+                  InkWell(
+                    onTap: () async {
+                      final selectedSort = await showModalBottomSheet<String>(
+                        context: context,
+                        isScrollControlled: true,
+                        backgroundColor: Colors.white,
+                        shape: const RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.vertical(top: Radius.circular(16)),
+                        ),
+                        builder: (context) => const BottomSheetProductSort(),
+                      );
+
+                      if (selectedSort != null) {
+                        setState(() {
+                          selectedSortOption = selectedSort;
+                        });
+                      }
+                    },
+                    child: Row(
+                      children: [
+                        const Icon(Icons.sort),
+                        const SizedBox(width: 6),
+                        Text(
+                          selectedSortOption ?? 'Sort',
+                          style: theme.textTheme.labelSmall,
+                        ),
+                      ],
+                    ),
                   ),
                   InkWell(
                     onTap: () {
