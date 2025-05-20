@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/data/women_tops_card.dart';
+import 'package:flutter_boilerplate_code/src/features/categories/presentation/widgets/rating_star.dart';
 
 class DressCard extends StatelessWidget {
   final WomenDressCard product;
@@ -43,27 +44,8 @@ class DressCard extends StatelessWidget {
                     Text(product.company,
                         style: theme.textTheme.labelSmall
                             ?.copyWith(color: Colors.grey)),
-                    Row(
-                      children: [
-                        ...List.generate(5, (index) {
-                          return Icon(
-                            index < ratingValue
-                                ? Icons.star
-                                : Icons.star_border,
-                            size: 13,
-                            color: index < ratingValue
-                                ? Colors.amber
-                                : Colors.grey,
-                          );
-                        }),
-                        SizedBox(width: 4),
-                        Text(
-                          '(${product.rating})',
-                          style: theme.textTheme.labelSmall
-                              ?.copyWith(color: Colors.grey),
-                        ),
-                      ],
-                    ),
+                    RatingStar(
+                        ratingValue: ratingValue, rating: product.rating),
                     Text('${product.price}\$',
                         style: theme.textTheme.labelLarge),
                   ],
