@@ -8,16 +8,16 @@ import 'package:provider/provider.dart';
 
 import '../widgets/categories_women_dress_card.dart';
 
-class ScreenCategoryWomenTops extends StatefulWidget {
-  const ScreenCategoryWomenTops({super.key});
+class ScreenCategoryWomenTopsGridView extends StatefulWidget {
+  const ScreenCategoryWomenTopsGridView({super.key});
 
   @override
-  State<ScreenCategoryWomenTops> createState() =>
+  State<ScreenCategoryWomenTopsGridView> createState() =>
       _ScreenCategoryWomenTopsState();
 }
 
-class _ScreenCategoryWomenTopsState extends State<ScreenCategoryWomenTops> {
-  bool isGridView = false;
+class _ScreenCategoryWomenTopsState
+    extends State<ScreenCategoryWomenTopsGridView> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((callback) {
@@ -106,21 +106,12 @@ class _ScreenCategoryWomenTopsState extends State<ScreenCategoryWomenTops> {
                       ),
                     ],
                   ),
-                  InkWell(
-                    onTap: () {
-                      setState(() {
-                        isGridView = !isGridView;
-                      });
-                    },
-                    child: Row(
-                      children: [
-                        Icon(isGridView
-                            ? Icons.view_list_rounded
-                            : Icons.grid_view_sharp),
-                        SizedBox(width: 6),
-                      ],
-                    ),
-                  ),
+                  Row(
+                    children: [
+                      Icon(Icons.filter),
+                      SizedBox(height: 6),
+                    ],
+                  )
                 ],
               ),
             ),
@@ -129,35 +120,14 @@ class _ScreenCategoryWomenTopsState extends State<ScreenCategoryWomenTops> {
             builder: (_, ProviderWomenDressList, child) {
               final productList = ProviderWomenDressList.womenTopsCard;
 
-              return isGridView
-                  ? SliverPadding(
-                      padding: EdgeInsets.symmetric(horizontal: 16),
-                      sliver: SliverGrid(
-                        delegate: SliverChildBuilderDelegate(
-                          (context, index) {
-                            return DressCard(
-                              product: productList[index],
-                              isGrid: true,
-                            );
-                          },
-                          childCount: productList.length,
-                        ),
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 12,
-                          mainAxisSpacing: 12,
-                          childAspectRatio: 0.65,
-                        ),
-                      ),
-                    )
-                  : SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                        (context, index) {
-                          return DressCard(product: productList[index]);
-                        },
-                        childCount: productList.length,
-                      ),
-                    );
+              return SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    return DressCard(product: productList[index]);
+                  },
+                  childCount: productList.length,
+                ),
+              );
             },
           ),
         ],

@@ -1,5 +1,6 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter_boilerplate_code/src/features/cart/presentation/screens/screen_cart.dart';
+import 'package:flutter_boilerplate_code/src/features/categories/presentation/screens/screen_categoory_women_tops_grid_view.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/screens/screen_category.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/screens/screen_category_list.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/screens/screen_category_women_tops.dart';
@@ -56,6 +57,11 @@ class RouterHelper {
     return const ScreenCategoryWomenTops();
   });
 
+  static final Handler _categoriesWomenTopsGridViewHandler =
+      Handler(handlerFunc: (context, Map<String, dynamic> parameters) {
+    return const ScreenCategoryWomenTopsGridView();
+  });
+
   static final Handler _notFoundHandler =
       Handler(handlerFunc: (context, parameters) => const ScreenError());
 
@@ -101,6 +107,11 @@ class RouterHelper {
     router.define(
       Routes.categoriesWomenTops,
       handler: _categoriesWomenTopsHandler,
+      transitionType: TransitionType.fadeIn,
+    );
+    router.define(
+      Routes.categoriesWomenTopsGridView,
+      handler: _categoriesWomenTopsGridViewHandler,
       transitionType: TransitionType.fadeIn,
     );
     router.define(
