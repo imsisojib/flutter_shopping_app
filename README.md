@@ -4,13 +4,29 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### How to config Provider?
+1. Make a Model Class
+    Create your data model in the data/ folder.
 
-A few resources to get you started if this is your first Flutter project:
+2. Create a Provider Class
+    Make a class that extends ChangeNotifier and handles your logic and data.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+3. Register the Provider in di_container
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+4. Wrap your app with MultiProvider in main.dart file:
+
+5. Call Provider Method on Widget Load 
+6. If needed, make your widget stateful. In initState(), add:
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+    context.read<YourProvider>().yourMethod();
+    });
+
+7. Use Provider in UI with Consumer
+
+     Consumer<YourProvider>(
+     builder: (context, provider, child) {
+     return Text(provider.someData);
+     },
+  );
+

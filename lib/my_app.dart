@@ -41,7 +41,7 @@ class _MyAppState extends State<MyApp> {
           title: 'Flutter Boilerplate Code',
           themeMode: ThemeMode.light,
           theme: buildLightTheme(context),
-          initialRoute: Routes.homeScreen,
+          initialRoute: Routes.categoriesWomenTops,
           onGenerateRoute: RouterHelper.router.generator,
         );
       },

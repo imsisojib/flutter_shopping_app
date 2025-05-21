@@ -266,9 +266,10 @@ class ScreenHome extends StatelessWidget {
           ],
         ),
       ),
-
       // bottom navigation bar
-      bottomNavigationBar: BottomNavigation(),
+      bottomNavigationBar: BottomNavigation(
+        activeIndex: 0,
+      ),
     );
   }
 }
