@@ -10,6 +10,6 @@ class Routes {
 
   static const String categoriesList = "/categoriesList";
   static const String categoriesWomenTops = "/categoriesWomenTops";
-  static const String categoriesWomenTopsGridView =
-      "/categoriesWomenTopsGridView";
+  static const String categoriesFilters = "/categoriesFilters";
+  static const String categoriesBrands = "/categoriesBrands";
 }

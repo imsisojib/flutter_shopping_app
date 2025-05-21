@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/data/women_tops_list.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/providers/provider_women_dress_list.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/providers/provider_women_tops_list.dart';
+import 'package:flutter_boilerplate_code/src/features/categories/presentation/screens/screen_category_filters.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/widgets/bottomshet_product_sort.dart';
 import 'package:flutter_boilerplate_code/src/resources/app_images.dart';
 import 'package:provider/provider.dart';
@@ -88,15 +89,25 @@ class _ScreenCategoryWomenTopsState extends State<ScreenCategoryWomenTops> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      children: [
-                        Icon(Icons.filter),
-                        SizedBox(width: 6),
-                        Text(
-                          'Filters',
-                          style: theme.textTheme.labelSmall,
-                        ),
-                      ],
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const ScreenCategoryFilters()),
+                        );
+                      },
+                      child: Row(
+                        children: [
+                          const Icon(Icons.filter),
+                          const SizedBox(width: 6),
+                          Text(
+                            'Filters',
+                            style: theme.textTheme.labelSmall,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   InkWell(

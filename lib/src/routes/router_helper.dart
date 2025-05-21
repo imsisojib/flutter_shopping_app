@@ -2,6 +2,8 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter_boilerplate_code/src/features/cart/presentation/screens/screen_cart.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/screens/screen_categoory_women_tops_grid_view.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/screens/screen_category.dart';
+import 'package:flutter_boilerplate_code/src/features/categories/presentation/screens/screen_category_brand.dart';
+import 'package:flutter_boilerplate_code/src/features/categories/presentation/screens/screen_category_filters.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/screens/screen_category_list.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/screens/screen_category_women_tops.dart';
 import 'package:flutter_boilerplate_code/src/features/errors/presentation/screens/screen_error.dart';
@@ -57,9 +59,14 @@ class RouterHelper {
     return const ScreenCategoryWomenTops();
   });
 
-  static final Handler _categoriesWomenTopsGridViewHandler =
+  static final Handler _categoriesFiltersHandler =
       Handler(handlerFunc: (context, Map<String, dynamic> parameters) {
-    return const ScreenCategoryWomenTopsGridView();
+    return const ScreenCategoryFilters();
+  });
+
+  static final Handler _categoriesBrandsHandler =
+      Handler(handlerFunc: (context, Map<String, dynamic> parameters) {
+    return const ScreenCategoryBrands();
   });
 
   static final Handler _notFoundHandler =
@@ -109,21 +116,31 @@ class RouterHelper {
       handler: _categoriesWomenTopsHandler,
       transitionType: TransitionType.fadeIn,
     );
+
     router.define(
-      Routes.categoriesWomenTopsGridView,
-      handler: _categoriesWomenTopsGridViewHandler,
+      Routes.categoriesFilters,
+      handler: _categoriesFiltersHandler,
       transitionType: TransitionType.fadeIn,
     );
+
+    router.define(
+      Routes.categoriesBrands,
+      handler: _categoriesBrandsHandler,
+      transitionType: TransitionType.fadeIn,
+    );
+
     router.define(
       Routes.cart,
       handler: _cartScreenHandler,
       transitionType: TransitionType.fadeIn,
     );
+
     router.define(
       Routes.favourite,
       handler: _favouriteScreenHandler,
       transitionType: TransitionType.fadeIn,
     );
+
     router.define(
       Routes.profile,
       handler: _profileScreenHandler,
