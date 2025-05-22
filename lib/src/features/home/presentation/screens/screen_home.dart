@@ -156,7 +156,10 @@ class _ScreenHomeState extends State<ScreenHome> {
                         scrollDirection: Axis.horizontal,
                         itemCount: productsSale.length,
                         itemBuilder: (context, index) {
-                          return SaleProductCard(product: productsSale[index]);
+                          return SaleProductCard(
+                            product: productsSale[index],
+                            index: index,
+                          );
                         },
                       ),
                     ),

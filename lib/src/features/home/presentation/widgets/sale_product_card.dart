@@ -6,7 +6,9 @@ import 'package:provider/provider.dart';
 
 class SaleProductCard extends StatelessWidget {
   final ProductsSale product;
-  const SaleProductCard({super.key, required this.product});
+  final int index;
+  const SaleProductCard(
+      {super.key, required this.product, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -67,12 +69,15 @@ class SaleProductCard extends StatelessWidget {
                 ),
               ),
               Positioned(
-                  bottom: -7,
-                  right: 8,
-                  child: InkWell(
+                bottom: -7,
+                right: 8,
+                child: Consumer<ProviderProductSale>(
+                    builder: (context, provider, child) {
+                  final product = provider.productSale[index];
+
+                  return InkWell(
                     onTap: () {
-                      Provider.of<ProviderProductSale>(context, listen: false)
-                          .toggleFavouriteIcon(product.title);
+                      provider.toggleFavouriteIcon(product.title);
                     },
                     child: Container(
                       padding: EdgeInsets.all(6),
@@ -89,7 +94,9 @@ class SaleProductCard extends StatelessWidget {
                             product.isFavourite ? Colors.red : Colors.black87,
                       ),
                     ),
-                  )),
+                  );
+                }),
+              )
             ],
           ),
           Padding(
