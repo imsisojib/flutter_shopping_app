@@ -36,6 +36,7 @@ class _ScreenCategoryBrandsState extends State<ScreenCategoryBrands> {
             }),
         title: Text(
           "Brand",
+          style: theme.textTheme.titleLarge,
         ),
         centerTitle: true,
       ),
@@ -110,7 +111,7 @@ class _ScreenCategoryBrandsState extends State<ScreenCategoryBrands> {
                           children: [
                             Text(
                               brand.name,
-                              style: theme.textTheme.bodyLarge?.copyWith(
+                              style: theme.textTheme.titleMedium?.copyWith(
                                 color: isSelected ? Colors.red : Colors.black,
                               ),
                             ),
@@ -127,6 +128,7 @@ class _ScreenCategoryBrandsState extends State<ScreenCategoryBrands> {
                               },
                               checkColor: Colors.white,
                               activeColor: Colors.red,
+                              side: BorderSide(color: Colors.grey, width: 2),
                             ),
                           ],
                         ),
