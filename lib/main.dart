@@ -5,6 +5,7 @@ import 'package:flutter_boilerplate_code/src/core/domain/interfaces/interface_ca
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/providers/provider_all_category_list.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/providers/provider_brands.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/providers/provider_categories.dart';
+import 'package:flutter_boilerplate_code/src/features/categories/presentation/providers/provider_colors.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/providers/provider_women_dress_list.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/providers/provider_women_tops_list.dart';
 import 'package:flutter_boilerplate_code/src/features/home/presentation/providers/provider_common.dart';
@@ -33,6 +34,7 @@ void main() async {
         ChangeNotifierProvider(
             create: (context) => di.sl<ProviderAllCategoryList>()),
         ChangeNotifierProvider(create: (context) => di.sl<ProviderBrands>()),
+        ChangeNotifierProvider(create: (context) => di.sl<ProviderColors>()),
       ],
       child: const MyApp(),
     ),

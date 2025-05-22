@@ -149,7 +149,7 @@ class _ScreenCategoryBrandsState extends State<ScreenCategoryBrands> {
             Expanded(
               child: OutlinedButton(
                 onPressed: () {
-                  Navigator.of(context).pop(); // or reset filters
+                  Navigator.of(context).pop();
                 },
                 style: OutlinedButton.styleFrom(
                   side: const BorderSide(color: Colors.black45),
@@ -163,9 +163,7 @@ class _ScreenCategoryBrandsState extends State<ScreenCategoryBrands> {
             const SizedBox(width: 12),
             Expanded(
               child: ElevatedButton(
-                onPressed: () {
-                  // apply filter logic
-                },
+                onPressed: () {},
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.red,
                   foregroundColor: Colors.white,

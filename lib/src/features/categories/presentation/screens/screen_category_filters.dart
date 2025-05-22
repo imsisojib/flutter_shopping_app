@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate_code/src/features/categories/presentation/providers/provider_colors.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/screens/screen_category_brand.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/widgets/filters_colors_dot_chip.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/widgets/filters_grid_category_chip.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/widgets/filters_section_wrapper.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/widgets/filters_size_chip.dart';
+import 'package:provider/provider.dart';
 
 class ScreenCategoryFilters extends StatefulWidget {
   const ScreenCategoryFilters({super.key});
@@ -18,18 +20,11 @@ class _ScreenCategoryFiltersState extends State<ScreenCategoryFilters> {
   Set<String> selectedCategories = {"All"};
   List<Color> selectedColors = [];
 
-  List<Color> colors = [
-    Colors.black,
-    Colors.greenAccent,
-    Colors.red[200]!,
-    Colors.brown[200]!,
-    Colors.orangeAccent,
-    Colors.indigo,
-  ];
-
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((callback) {});
+    WidgetsBinding.instance.addPostFrameCallback((callback) {
+      context.read<ProviderColors>().fetchColor();
+    });
     super.initState();
   }
 
@@ -47,146 +42,150 @@ class _ScreenCategoryFiltersState extends State<ScreenCategoryFilters> {
         title: Text("Filters"),
         centerTitle: true,
       ),
-      body: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                FiltersSectionWrapper(
-                  title: "Price range",
-                  theme: theme,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text("\$${priceRange.start.toInt()}",
-                                  style: theme.textTheme.bodyMedium),
-                              Text("\$${priceRange.end.toInt()}",
-                                  style: theme.textTheme.bodyMedium),
-                            ],
-                          )),
-                      RangeSlider(
-                        values: priceRange,
-                        min: 0,
-                        max: 200,
-                        labels: RangeLabels(
-                          "\$${priceRange.start.toInt()}",
-                          "\$${priceRange.end.toInt()}",
-                        ),
-                        onChanged: (RangeValues values) {
-                          setState(() {
-                            priceRange = values;
-                          });
-                        },
-                        activeColor: Colors.red,
-                        inactiveColor: Colors.grey[300],
-                      ),
-                    ],
-                  ),
-                ),
-                FiltersSectionWrapper(
-                    title: "Colors",
+      body: Consumer<ProviderColors>(builder: (context, providerColors, child) {
+        final colors = providerColors.colorList;
+        return CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  FiltersSectionWrapper(
+                    title: "Price range",
                     theme: theme,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: colors.map((color) {
-                        return FiltersColorsDotChip(
-                          color: color,
-                          selected: selectedColors.contains(color),
-                          onTap: () {
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 10.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text("\$${priceRange.start.toInt()}",
+                                    style: theme.textTheme.bodyMedium),
+                                Text("\$${priceRange.end.toInt()}",
+                                    style: theme.textTheme.bodyMedium),
+                              ],
+                            )),
+                        RangeSlider(
+                          values: priceRange,
+                          min: 0,
+                          max: 200,
+                          labels: RangeLabels(
+                            "\$${priceRange.start.toInt()}",
+                            "\$${priceRange.end.toInt()}",
+                          ),
+                          onChanged: (RangeValues values) {
                             setState(() {
-                              if (selectedColors.contains(color)) {
-                                selectedColors.remove(color);
-                              } else {
-                                selectedColors.add(color);
-                              }
+                              priceRange = values;
                             });
                           },
-                        );
-                      }).toList(),
-                    )),
-                FiltersSectionWrapper(
-                    title: "Sizes",
+                          activeColor: Colors.red,
+                          inactiveColor: Colors.grey[300],
+                        ),
+                      ],
+                    ),
+                  ),
+                  FiltersSectionWrapper(
+                      title: "Colors",
+                      theme: theme,
+                      child: Wrap(
+                        spacing: 8,
+                        runSpacing: 8,
+                        children: colors.map((color) {
+                          return FiltersColorsDotChip(
+                            color: color.color,
+                            selected: selectedColors.contains(color.color),
+                            onTap: () {
+                              setState(() {
+                                if (selectedColors.contains(color.color)) {
+                                  selectedColors.remove(color.color);
+                                } else {
+                                  selectedColors.add(color.color);
+                                }
+                              });
+                            },
+                          );
+                        }).toList(),
+                      )),
+                  FiltersSectionWrapper(
+                      title: "Sizes",
+                      theme: theme,
+                      child: Wrap(
+                        spacing: 20,
+                        children: ["XS", "S", "M", "L", "XL"]
+                            .map((size) => FiltersSizeChip(
+                                  size: size,
+                                  selected: selectedSizes.contains(size),
+                                  onTap: () {
+                                    setState(() {
+                                      if (selectedSizes.contains(size)) {
+                                        selectedSizes.remove(size);
+                                      } else {
+                                        selectedSizes.add(size);
+                                      }
+                                    });
+                                  },
+                                ))
+                            .toList(),
+                      )),
+                  FiltersSectionWrapper(
+                    title: "Category",
                     theme: theme,
-                    child: Wrap(
-                      spacing: 20,
-                      children: ["XS", "S", "M", "L", "XL"]
-                          .map((size) => FiltersSizeChip(
-                                size: size,
-                                selected: selectedSizes.contains(size),
+                    child: GridView.count(
+                      crossAxisCount: 3,
+                      mainAxisSpacing: 15,
+                      crossAxisSpacing: 12,
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      childAspectRatio: 2.5,
+                      children: ["All", "Women", "Men", "Boys", "Girls"]
+                          .map((cat) => FiltersGridCategoryChip(
+                                category: cat,
+                                selected: selectedCategories.contains(cat),
                                 onTap: () {
                                   setState(() {
-                                    if (selectedSizes.contains(size)) {
-                                      selectedSizes.remove(size);
+                                    if (selectedCategories.contains(cat)) {
+                                      selectedCategories.remove(cat);
                                     } else {
-                                      selectedSizes.add(size);
+                                      selectedCategories.add(cat);
                                     }
                                   });
                                 },
                               ))
                           .toList(),
-                    )),
-                FiltersSectionWrapper(
-                  title: "Category",
-                  theme: theme,
-                  child: GridView.count(
-                    crossAxisCount: 3,
-                    mainAxisSpacing: 15,
-                    crossAxisSpacing: 12,
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    childAspectRatio: 2.5,
-                    children: ["All", "Women", "Men", "Boys", "Girls"]
-                        .map((cat) => FiltersGridCategoryChip(
-                              category: cat,
-                              selected: selectedCategories.contains(cat),
-                              onTap: () {
-                                setState(() {
-                                  if (selectedCategories.contains(cat)) {
-                                    selectedCategories.remove(cat);
-                                  } else {
-                                    selectedCategories.add(cat);
-                                  }
-                                });
-                              },
-                            ))
-                        .toList(),
+                    ),
                   ),
-                ),
-                FiltersSectionWrapper(
-                    title: "Brand",
-                    theme: theme,
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ScreenCategoryBrands(),
+                  FiltersSectionWrapper(
+                      title: "Brand",
+                      theme: theme,
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ScreenCategoryBrands(),
+                            ),
+                          );
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 8),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("Select brand"),
+                              Icon(Icons.arrow_forward_ios, size: 16),
+                            ],
                           ),
-                        );
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 8),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text("Select brand"),
-                            Icon(Icons.arrow_forward_ios, size: 16),
-                          ],
                         ),
-                      ),
-                    )),
-                SizedBox(height: 80),
-              ],
+                      )),
+                  SizedBox(height: 80),
+                ],
+              ),
             ),
-          ),
-        ],
-      ),
+          ],
+        );
+      }),
       bottomNavigationBar: Container(
         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 25),
         decoration: BoxDecoration(
