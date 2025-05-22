@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate_code/src/features/home/data/products_sale.dart';
 import 'package:flutter_boilerplate_code/src/features/home/presentation/providers/provider_product_sale.dart';
 import 'package:flutter_boilerplate_code/src/resources/app_images.dart';
+import 'package:provider/provider.dart';
 
 class SaleProductCard extends StatelessWidget {
   final ProductsSale product;
@@ -66,25 +67,33 @@ class SaleProductCard extends StatelessWidget {
                 ),
               ),
               Positioned(
-                bottom: -7,
-                right: 8,
-                child: Container(
-                  padding: const EdgeInsets.all(6),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Icon(
-                    Icons.favorite_border,
-                    size: 20,
-                    color: Colors.black87,
-                  ),
-                ),
-              ),
+                  bottom: -7,
+                  right: 8,
+                  child: InkWell(
+                    onTap: () {
+                      Provider.of<ProviderProductSale>(context, listen: false)
+                          .toggleFavouriteIcon(product.title);
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(6),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(
+                        product.isFavourite
+                            ? Icons.favorite
+                            : Icons.favorite_border,
+                        size: 20,
+                        color:
+                            product.isFavourite ? Colors.red : Colors.black87,
+                      ),
+                    ),
+                  )),
             ],
           ),
           Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: EdgeInsets.all(12.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

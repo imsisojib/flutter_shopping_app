@@ -66,4 +66,15 @@ class ProviderProductSale extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  void toggleFavouriteIcon(String title) {
+    final index = productSale.indexWhere((p) => p.title == title);
+    if (index != -1) {
+      productSale[index].isFavourite = !productSale[index].isFavourite;
+      notifyListeners();
+    }
+  }
+
+  List<ProductsSale> get productSaleFavourite =>
+      productSale.where((p) => p.isFavourite == true).toList();
 }
