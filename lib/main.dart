@@ -9,6 +9,7 @@ import 'package:flutter_boilerplate_code/src/features/categories/presentation/pr
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/providers/provider_women_dress_list.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/providers/provider_women_tops_list.dart';
 import 'package:flutter_boilerplate_code/src/features/home/presentation/providers/provider_common.dart';
+import 'package:flutter_boilerplate_code/src/features/home/presentation/providers/provider_product_sale.dart';
 import 'di_container.dart' as di;
 import 'package:provider/provider.dart';
 
@@ -25,6 +26,8 @@ void main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => di.sl<ProviderCommon>()),
+        ChangeNotifierProvider(
+            create: (context) => di.sl<ProviderProductSale>()),
         ChangeNotifierProvider(
             create: (context) => di.sl<ProviderCategories>()),
         ChangeNotifierProvider(

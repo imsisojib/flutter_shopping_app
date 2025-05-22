@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate_code/src/features/home/data/products_sale.dart';
+import 'package:flutter_boilerplate_code/src/features/home/presentation/providers/provider_product_sale.dart';
 import 'package:flutter_boilerplate_code/src/resources/app_images.dart';
 
 class SaleProductCard extends StatelessWidget {
-  const SaleProductCard({super.key});
+  final ProductsSale product;
+  const SaleProductCard({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +34,7 @@ class SaleProductCard extends StatelessWidget {
                 borderRadius:
                     const BorderRadius.vertical(top: Radius.circular(16)),
                 child: Image.asset(
-                  AppImages.blackDress,
+                  product.image,
                   height: 250,
                   width: double.infinity,
                   fit: BoxFit.cover,
@@ -94,7 +97,7 @@ class SaleProductCard extends StatelessWidget {
                     Icon(Icons.star, color: Colors.orange, size: 16),
                     SizedBox(width: 6),
                     Text(
-                      "(7)",
+                      product.reviews.toString(),
                       style: theme.textTheme.bodyMedium
                           ?.copyWith(color: Colors.black87),
                     ),
@@ -102,27 +105,27 @@ class SaleProductCard extends StatelessWidget {
                 ),
                 SizedBox(height: 4),
                 Text(
-                  "Sitilly",
+                  product.company,
                   style: theme.textTheme.bodySmall
                       ?.copyWith(color: Colors.black54),
                 ),
                 SizedBox(height: 4),
                 Text(
-                  "Summer Dress",
+                  product.title,
                   style: theme.textTheme.titleMedium
                       ?.copyWith(color: Colors.black),
                 ),
                 SizedBox(height: 4),
                 Row(
                   children: [
-                    Text("\$29.95",
+                    Text("\$${product.price.toStringAsFixed(2)}",
                         style: theme.textTheme.titleMedium?.copyWith(
                           color: Colors.grey,
                           decoration: TextDecoration.lineThrough,
                         )),
                     SizedBox(width: 8),
                     Text(
-                      "\$20.90",
+                      "\$${product.discountPrice.toStringAsFixed(2)}",
                       style: theme.textTheme.titleMedium?.copyWith(
                         color: Colors.red,
                       ),
