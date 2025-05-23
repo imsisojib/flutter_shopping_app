@@ -4,6 +4,8 @@ import 'package:flutter_boilerplate_code/src/features/home/presentation/provider
 import 'package:flutter_boilerplate_code/src/resources/app_images.dart';
 import 'package:provider/provider.dart';
 
+import '../../../categories/presentation/widgets/rating_star.dart';
+
 class SaleProductCard extends StatelessWidget {
   final ProductsSale product;
   final int index;
@@ -13,7 +15,7 @@ class SaleProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-
+    final int ratingValue = int.tryParse(product.rating) ?? 0;
     return Container(
       width: 180,
       margin: const EdgeInsets.only(left: 16),
@@ -104,21 +106,7 @@ class SaleProductCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  children: [
-                    Icon(Icons.star, color: Colors.orange, size: 16),
-                    Icon(Icons.star, color: Colors.orange, size: 16),
-                    Icon(Icons.star, color: Colors.orange, size: 16),
-                    Icon(Icons.star, color: Colors.orange, size: 16),
-                    Icon(Icons.star, color: Colors.orange, size: 16),
-                    SizedBox(width: 6),
-                    Text(
-                      product.reviews.toString(),
-                      style: theme.textTheme.bodyMedium
-                          ?.copyWith(color: Colors.black87),
-                    ),
-                  ],
-                ),
+                RatingStar(ratingValue: ratingValue, rating: product.rating),
                 SizedBox(height: 4),
                 Text(
                   product.company,
