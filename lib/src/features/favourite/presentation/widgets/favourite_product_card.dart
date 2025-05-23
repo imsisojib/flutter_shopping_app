@@ -103,7 +103,7 @@ class FavouriteProductCard extends StatelessWidget {
               child: const Padding(
                 padding: EdgeInsets.all(8),
                 child: Icon(
-                  Icons.favorite_border,
+                  Icons.shopping_bag,
                   color: Colors.grey,
                   size: 15,
                 ),
@@ -178,7 +178,7 @@ class FavouriteProductCard extends StatelessWidget {
                     child: const Padding(
                       padding: EdgeInsets.all(6),
                       child: Icon(
-                        Icons.favorite_border,
+                        Icons.shopping_bag,
                         color: Colors.grey,
                         size: 16,
                       ),

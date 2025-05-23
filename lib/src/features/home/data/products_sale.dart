@@ -9,6 +9,7 @@ class ProductsSale {
   double discountPrice;
   int reviews;
   bool isFavourite;
+  bool isInBag;
 
   ProductsSale({
     required this.title,
@@ -19,5 +20,6 @@ class ProductsSale {
     required this.discountPrice,
     required this.reviews,
     this.isFavourite = false,
+    this.isInBag = false,
   });
 }
