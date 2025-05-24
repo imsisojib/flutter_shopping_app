@@ -34,44 +34,86 @@ class BagProductCard extends StatelessWidget {
               child: Row(
                 children: [
                   SizedBox(
-                    width: 120,
-                    height: 110,
+                    width: 100,
+                    height: 100,
                     child: ClipRRect(
                       child: Image.asset(product.image, fit: BoxFit.cover),
                     ),
                   ),
-                  SizedBox(width: 12),
+                  SizedBox(width: 6),
                   Expanded(
+                    flex: 2,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(product.company,
-                            style: theme.textTheme.labelSmall
-                                ?.copyWith(color: Colors.grey)),
                         Text(product.title, style: theme.textTheme.bodyLarge),
-                        Text(
-                          'Color: Orange',
-                          style: theme.textTheme.bodySmall
-                              ?.copyWith(color: Colors.grey),
+                        SizedBox(height: 6),
+                        Row(
+                          children: [
+                            RichText(
+                                text: TextSpan(
+                                    style: theme.textTheme.bodySmall
+                                        ?.copyWith(color: Colors.grey),
+                                    children: [
+                                  TextSpan(text: "Color: "),
+                                  TextSpan(
+                                    text: "Orange",
+                                    style: theme.textTheme.bodySmall
+                                        ?.copyWith(color: Colors.black),
+                                  )
+                                ])),
+                            SizedBox(width: 6),
+                            RichText(
+                                text: TextSpan(
+                                    style: theme.textTheme.bodySmall
+                                        ?.copyWith(color: Colors.grey),
+                                    children: [
+                                  TextSpan(text: "Size: "),
+                                  TextSpan(
+                                    text: "L",
+                                    style: theme.textTheme.bodySmall
+                                        ?.copyWith(color: Colors.black),
+                                  )
+                                ])),
+                          ],
                         ),
-                        //SizedBox(height: 6),
-
-                        //RatingStar(ratingValue: ratingValue, rating: product.rating),
-                        Text('${product.price}\$',
-                            style: theme.textTheme.labelLarge),
+                        Row(
+                          children: [
+                            IconButton(
+                                onPressed: () {},
+                                icon: Icon(
+                                  Icons.add,
+                                  color: Colors.grey,
+                                )),
+                            Text(
+                              '0',
+                              style: theme.textTheme.titleSmall,
+                            ),
+                            IconButton(
+                                onPressed: () {},
+                                icon: Icon(
+                                  Icons.remove,
+                                  color: Colors.grey,
+                                )),
+                          ],
+                        ),
                       ],
                     ),
                   ),
                   Expanded(
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      //mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        //SizedBox(height: 12),
+                        Icon(
+                          Icons.more_vert,
+                          size: 20,
+                          color: Colors.grey,
+                        ),
+                        SizedBox(height: 40),
                         Text(
-                          'Size: L',
-                          style: theme.textTheme.bodySmall
-                              ?.copyWith(color: Colors.grey),
+                          '23\$',
+                          style: theme.textTheme.titleSmall,
                         ),
                         //RatingStar(ratingValue: ratingValue, rating: product.rating),
                       ],
@@ -82,48 +124,6 @@ class BagProductCard extends StatelessWidget {
             ),
           ],
         ),
-        Positioned(
-          bottom: -3,
-          right: 25,
-          child: InkWell(
-            onTap: () {
-              Provider.of<ProviderProductSale>(context, listen: false)
-                  .toggleBagIcon(product.title);
-            },
-            child: Container(
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.black12,
-                      blurRadius: 4,
-                      offset: Offset(0, 2)),
-                ],
-              ),
-              child: const Padding(
-                padding: EdgeInsets.all(8),
-                child: Icon(
-                  Icons.shopping_bag,
-                  color: Colors.grey,
-                  size: 15,
-                ),
-              ),
-            ),
-          ),
-        ),
-        Positioned(
-          top: 15,
-          right: 30,
-          child: InkWell(
-              onTap: () {
-                //onRemove?.call(product);
-              },
-              child: Icon(
-                Icons.close,
-                size: 20,
-              )),
-        )
       ],
     );
   }
