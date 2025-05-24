@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/widgets/rating_star.dart';
 import 'package:flutter_boilerplate_code/src/features/home/data/products_sale.dart';
+import 'package:flutter_boilerplate_code/src/features/home/presentation/providers/provider_product_sale.dart';
+import 'package:provider/provider.dart';
 
 class FavouriteProductCard extends StatelessWidget {
   final ProductsSale product;
   final bool isGrid;
   final void Function(ProductsSale product)? onRemove;
 
-  const FavouriteProductCard(
-      {super.key, required this.product, this.isGrid = false, this.onRemove});
+  const FavouriteProductCard({
+    super.key,
+    required this.product,
+    this.isGrid = false,
+    this.onRemove,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -89,23 +95,29 @@ class FavouriteProductCard extends StatelessWidget {
           Positioned(
             bottom: -3,
             right: 25,
-            child: Container(
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.black12,
-                      blurRadius: 4,
-                      offset: Offset(0, 2)),
-                ],
-              ),
-              child: const Padding(
-                padding: EdgeInsets.all(8),
-                child: Icon(
-                  Icons.shopping_bag,
-                  color: Colors.grey,
-                  size: 15,
+            child: InkWell(
+              onTap: () {
+                Provider.of<ProviderProductSale>(context, listen: false)
+                    .toggleBagIcon(product.title);
+              },
+              child: Container(
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.black12,
+                        blurRadius: 4,
+                        offset: Offset(0, 2)),
+                  ],
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(8),
+                  child: Icon(
+                    Icons.shopping_bag,
+                    color: product.isInBag ? Colors.red : Colors.grey,
+                    size: 15,
+                  ),
                 ),
               ),
             ),
