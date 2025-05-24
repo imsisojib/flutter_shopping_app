@@ -35,12 +35,12 @@ class BagProductCard extends StatelessWidget {
                 children: [
                   SizedBox(
                     width: 100,
-                    height: 100,
+                    height: 120,
                     child: ClipRRect(
                       child: Image.asset(product.image, fit: BoxFit.cover),
                     ),
                   ),
-                  SizedBox(width: 6),
+                  SizedBox(width: 15),
                   Expanded(
                     flex: 2,
                     child: Column(
@@ -62,7 +62,7 @@ class BagProductCard extends StatelessWidget {
                                         ?.copyWith(color: Colors.black),
                                   )
                                 ])),
-                            SizedBox(width: 6),
+                            SizedBox(width: 8),
                             RichText(
                                 text: TextSpan(
                                     style: theme.textTheme.bodySmall
@@ -77,24 +77,59 @@ class BagProductCard extends StatelessWidget {
                                 ])),
                           ],
                         ),
+                        SizedBox(height: 8),
                         Row(
                           children: [
-                            IconButton(
-                                onPressed: () {},
-                                icon: Icon(
-                                  Icons.add,
-                                  color: Colors.grey,
-                                )),
+                            Container(
+                              width: 40,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black12,
+                                      blurRadius: 6,
+                                      offset: Offset(0, 2),
+                                    ),
+                                  ]),
+                              child: IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(
+                                    Icons.add,
+                                    color: Colors.grey,
+                                  )),
+                            ),
+                            SizedBox(
+                              width: 14,
+                            ),
                             Text(
                               '0',
                               style: theme.textTheme.titleSmall,
                             ),
-                            IconButton(
-                                onPressed: () {},
-                                icon: Icon(
-                                  Icons.remove,
-                                  color: Colors.grey,
-                                )),
+                            SizedBox(
+                              width: 14,
+                            ),
+                            Container(
+                              width: 40,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black12,
+                                      blurRadius: 6,
+                                      offset: Offset(0, 2),
+                                    ),
+                                  ]),
+                              child: IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(
+                                    Icons.remove,
+                                    color: Colors.grey,
+                                  )),
+                            )
                           ],
                         ),
                       ],
@@ -105,15 +140,25 @@ class BagProductCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       //mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Icon(
-                          Icons.more_vert,
-                          size: 20,
-                          color: Colors.grey,
-                        ),
-                        SizedBox(height: 40),
-                        Text(
-                          '23\$',
-                          style: theme.textTheme.titleSmall,
+                        Positioned(
+                            child: PopupMenuButton(
+                          itemBuilder: (context) => [
+                            PopupMenuItem(child: Text("Add to favourite")),
+                            PopupMenuItem(child: Text("Delete from list")),
+                          ],
+                          icon: Icon(
+                            Icons.more_vert,
+                            size: 20,
+                            color: Colors.grey,
+                          ),
+                        )),
+                        SizedBox(height: 30),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          child: Text(
+                            '23\$',
+                            style: theme.textTheme.titleSmall,
+                          ),
                         ),
                         //RatingStar(ratingValue: ratingValue, rating: product.rating),
                       ],

@@ -92,7 +92,7 @@ class _ScreenCartState extends State<ScreenCart> {
             ),
             SliverToBoxAdapter(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                 child: Column(
                   children: [
                     Row(
