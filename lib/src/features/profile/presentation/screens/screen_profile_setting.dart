@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate_code/src/features/profile/presentation/widgets/bottomsheet_password_change.dart';
+import 'package:flutter_boilerplate_code/src/helpers/widget_helper.dart';
 import 'package:provider/provider.dart';
 
 import '../../../home/presentation/widgets/bottom_navigation.dart';
@@ -93,9 +95,15 @@ class _ScreenProfileSettingState extends State<ScreenProfileSetting> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text("Password", style: theme.textTheme.bodyLarge),
-                Text("Change",
-                    style: theme.textTheme.titleSmall
-                        ?.copyWith(color: Colors.grey)),
+                InkWell(
+                  onTap: () {
+                    WidgetHelper.showBottomSheet(
+                        content: BottomSheetChangePassword());
+                  },
+                  child: Text("Change",
+                      style: theme.textTheme.titleSmall
+                          ?.copyWith(color: Colors.grey)),
+                ),
               ],
             ),
             SizedBox(height: 20),
