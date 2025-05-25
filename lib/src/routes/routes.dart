@@ -4,6 +4,7 @@ class Routes {
   static const String cart = "/cart";
   static const String favourite = "/favourite";
   static const String profile = "/profile";
+  static const String profileSetting = "/profileSetting";
 
   static const String productDetails = "/productDetails";
   static const String reviews = "/reviews";

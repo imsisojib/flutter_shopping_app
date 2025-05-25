@@ -12,6 +12,7 @@ import 'package:flutter_boilerplate_code/src/features/products/presentation/scre
 import 'package:flutter_boilerplate_code/src/features/home/presentation/screens/screen_home.dart';
 import 'package:flutter_boilerplate_code/src/features/products/presentation/screens/screen_review.dart';
 import 'package:flutter_boilerplate_code/src/features/profile/presentation/screens/screen_profile.dart';
+import 'package:flutter_boilerplate_code/src/features/profile/presentation/screens/screen_profile_setting.dart';
 import 'package:flutter_boilerplate_code/src/routes/routes.dart';
 
 class RouterHelper {
@@ -34,6 +35,12 @@ class RouterHelper {
       Handler(handlerFunc: (context, Map<String, dynamic> parameters) {
     return const ScreenProfile();
   });
+
+  static final Handler _profileScreenSettingHandler =
+      Handler(handlerFunc: (context, Map<String, dynamic> parameters) {
+    return const ScreenProfileSetting();
+  });
+
   static final Handler _categoriesHandler =
       Handler(handlerFunc: (context, Map<String, dynamic> parameters) {
     return const ScreenCategory();
@@ -144,6 +151,12 @@ class RouterHelper {
     router.define(
       Routes.profile,
       handler: _profileScreenHandler,
+      transitionType: TransitionType.fadeIn,
+    );
+
+    router.define(
+      Routes.profileSetting,
+      handler: _profileScreenSettingHandler,
       transitionType: TransitionType.fadeIn,
     );
   }
