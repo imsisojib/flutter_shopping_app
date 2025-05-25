@@ -10,6 +10,7 @@ import 'package:flutter_boilerplate_code/src/features/categories/presentation/pr
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/providers/provider_women_tops_list.dart';
 import 'package:flutter_boilerplate_code/src/features/home/presentation/providers/provider_common.dart';
 import 'package:flutter_boilerplate_code/src/features/home/presentation/providers/provider_product_sale.dart';
+import 'package:flutter_boilerplate_code/src/features/profile/presentation/providers/provider_profile_page.dart';
 import 'di_container.dart' as di;
 import 'package:provider/provider.dart';
 
@@ -38,6 +39,8 @@ void main() async {
             create: (context) => di.sl<ProviderAllCategoryList>()),
         ChangeNotifierProvider(create: (context) => di.sl<ProviderBrands>()),
         ChangeNotifierProvider(create: (context) => di.sl<ProviderColors>()),
+        ChangeNotifierProvider(
+            create: (context) => di.sl<ProviderProfilePage>()),
       ],
       child: const MyApp(),
     ),

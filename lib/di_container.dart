@@ -13,6 +13,7 @@ import 'package:flutter_boilerplate_code/src/features/categories/presentation/pr
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/providers/provider_women_tops_list.dart';
 import 'package:flutter_boilerplate_code/src/features/home/presentation/providers/provider_common.dart';
 import 'package:flutter_boilerplate_code/src/features/home/presentation/providers/provider_product_sale.dart';
+import 'package:flutter_boilerplate_code/src/features/profile/presentation/providers/provider_profile_page.dart';
 import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -60,6 +61,9 @@ Future<void> init() async {
   );
   sl.registerFactory(
     () => ProviderColors(),
+  );
+  sl.registerFactory(
+    () => ProviderProfilePage(),
   );
 
   //interceptors
