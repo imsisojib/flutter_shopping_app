@@ -11,6 +11,7 @@ import 'package:flutter_boilerplate_code/src/features/favourite/presentation/scr
 import 'package:flutter_boilerplate_code/src/features/products/presentation/screens/screen_product_details.dart';
 import 'package:flutter_boilerplate_code/src/features/home/presentation/screens/screen_home.dart';
 import 'package:flutter_boilerplate_code/src/features/products/presentation/screens/screen_review.dart';
+import 'package:flutter_boilerplate_code/src/features/profile/presentation/screens/screen_my_order.dart';
 import 'package:flutter_boilerplate_code/src/features/profile/presentation/screens/screen_profile.dart';
 import 'package:flutter_boilerplate_code/src/features/profile/presentation/screens/screen_profile_setting.dart';
 import 'package:flutter_boilerplate_code/src/routes/routes.dart';
@@ -39,6 +40,11 @@ class RouterHelper {
   static final Handler _profileScreenSettingHandler =
       Handler(handlerFunc: (context, Map<String, dynamic> parameters) {
     return const ScreenProfileSetting();
+  });
+
+  static final Handler _profileMyOrderHandler =
+      Handler(handlerFunc: (context, Map<String, dynamic> parameters) {
+    return const ScreenMyOrder();
   });
 
   static final Handler _categoriesHandler =
@@ -157,6 +163,12 @@ class RouterHelper {
     router.define(
       Routes.profileSetting,
       handler: _profileScreenSettingHandler,
+      transitionType: TransitionType.fadeIn,
+    );
+
+    router.define(
+      Routes.profileMyOrder,
+      handler: _profileMyOrderHandler,
       transitionType: TransitionType.fadeIn,
     );
   }

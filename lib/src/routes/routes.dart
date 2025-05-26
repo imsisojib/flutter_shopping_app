@@ -5,6 +5,7 @@ class Routes {
   static const String favourite = "/favourite";
   static const String profile = "/profile";
   static const String profileSetting = "/profileSetting";
+  static const String profileMyOrder = "/profileMyOrder";
 
   static const String productDetails = "/productDetails";
   static const String reviews = "/reviews";

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate_code/src/features/home/presentation/widgets/bottom_navigation.dart';
 import 'package:flutter_boilerplate_code/src/features/profile/presentation/providers/provider_profile_page.dart';
+import 'package:flutter_boilerplate_code/src/features/profile/presentation/screens/screen_my_order.dart';
 import 'package:flutter_boilerplate_code/src/features/profile/presentation/screens/screen_profile_setting.dart';
 import 'package:flutter_boilerplate_code/src/resources/app_images.dart';
 import 'package:provider/provider.dart';
@@ -91,6 +92,9 @@ class _ScreenProfileState extends State<ScreenProfile> {
                             context,
                             MaterialPageRoute(
                                 builder: (_) => ScreenProfileSetting()));
+                      } else if (data.title == 'My Orders') {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => ScreenMyOrder()));
                       }
                     });
                   })),
