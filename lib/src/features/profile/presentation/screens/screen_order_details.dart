@@ -3,6 +3,8 @@ import 'package:flutter_boilerplate_code/src/features/profile/presentation/provi
 import 'package:flutter_boilerplate_code/src/features/profile/presentation/widgets/order_details_card.dart';
 import 'package:provider/provider.dart';
 
+import '../widgets/other_info_widget.dart';
+
 class ScreenOrderDetails extends StatefulWidget {
   final String? orderNo, trackingNo, date, status;
 
@@ -118,75 +120,20 @@ class _ScreenOrderDetailsState extends State<ScreenOrderDetails> {
                         SizedBox(
                           height: 8,
                         ),
-                        Row(
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Shipping Address: ',
-                                style: theme.textTheme.bodyMedium
-                                    ?.copyWith(color: Colors.grey)),
-                            Expanded(
-                              child: Text(
-                                '3 Newbridge Court ,Chino Hills,CA 91709, United States',
-                                overflow: TextOverflow.visible,
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        Row(
-                          children: [
-                            Text('Payment method:',
-                                style: theme.textTheme.bodyMedium
-                                    ?.copyWith(color: Colors.grey)),
-                            Text(
-                              '**** **** **** 3947',
-                              overflow: TextOverflow.visible,
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              'Delivery method: ',
-                              style: theme.textTheme.bodyMedium
-                                  ?.copyWith(color: Colors.grey),
-                            ),
-                            Text(
-                              'FedEx, 3 days, 15\$',
-                              overflow: TextOverflow.visible,
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        Row(
-                          children: [
-                            Text('Discount: ',
-                                style: theme.textTheme.bodyMedium
-                                    ?.copyWith(color: Colors.grey)),
-                            Text(
-                              '10%, Personal promo code',
-                              overflow: TextOverflow.visible,
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        Row(
-                          children: [
-                            Text('Total Amount: ',
-                                style: theme.textTheme.bodyMedium
-                                    ?.copyWith(color: Colors.grey)),
-                            Text(
-                              '100\$',
-                              overflow: TextOverflow.visible,
-                            ),
+                            otherInfoWidget(
+                                'Shipping Address:',
+                                '3 Newbridge Court, Chino Hills, CA 91709, United States',
+                                theme),
+                            otherInfoWidget('Payment method:',
+                                '**** **** **** 3947', theme),
+                            otherInfoWidget('Delivery method:',
+                                'FedEx, 3 days, 15\$', theme),
+                            otherInfoWidget(
+                                'Discount:', '10%, Personal promo code', theme),
+                            otherInfoWidget('Total Amount:', '100\$', theme),
                           ],
                         ),
                         SizedBox(
