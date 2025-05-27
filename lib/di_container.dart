@@ -14,6 +14,7 @@ import 'package:flutter_boilerplate_code/src/features/categories/presentation/pr
 import 'package:flutter_boilerplate_code/src/features/home/presentation/providers/provider_common.dart';
 import 'package:flutter_boilerplate_code/src/features/home/presentation/providers/provider_product_sale.dart';
 import 'package:flutter_boilerplate_code/src/features/profile/presentation/providers/provider_my_order.dart';
+import 'package:flutter_boilerplate_code/src/features/profile/presentation/providers/provider_order_details.dart';
 import 'package:flutter_boilerplate_code/src/features/profile/presentation/providers/provider_profile_page.dart';
 import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
@@ -68,6 +69,9 @@ Future<void> init() async {
   );
   sl.registerFactory(
     () => ProviderMyOrder(),
+  );
+  sl.registerFactory(
+    () => ProviderOrderDetails(),
   );
 
   //interceptors

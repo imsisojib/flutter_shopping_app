@@ -21,7 +21,7 @@ class ProviderMyOrder extends ChangeNotifier {
         quantity: 3,
         totalAmount: 112,
         date: '15-06-2020',
-        status: "Pending"));
+        status: "Delivered"));
 
     myOrderPageData.add(MyOrderPageData(
         orderNo: '1947067',
@@ -37,7 +37,7 @@ class ProviderMyOrder extends ChangeNotifier {
         quantity: 3,
         totalAmount: 112,
         date: '29-10-2022',
-        status: "Pending"));
+        status: "Delivered"));
 
     notifyListeners();
   }

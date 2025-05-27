@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate_code/src/features/profile/data/my_order_data.dart';
+import 'package:flutter_boilerplate_code/src/features/profile/presentation/screens/screen_order_details.dart';
 
 class MyOrderCard extends StatelessWidget {
   final MyOrderPageData myOrderPageData;
@@ -93,7 +94,17 @@ class MyOrderCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ScreenOrderDetails(
+                                orderNo: myOrderPageData.orderNo,
+                                trackingNo: myOrderPageData.trackingNo,
+                                date: myOrderPageData.date,
+                                status: myOrderPageData.status,
+                              )));
+                },
                 style: TextButton.styleFrom(
                     side: BorderSide(color: Colors.black, width: 1),
                     shape: RoundedRectangleBorder(
