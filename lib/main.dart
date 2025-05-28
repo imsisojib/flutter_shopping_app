@@ -13,6 +13,7 @@ import 'package:flutter_boilerplate_code/src/features/home/presentation/provider
 import 'package:flutter_boilerplate_code/src/features/profile/presentation/providers/provider_my_order.dart';
 import 'package:flutter_boilerplate_code/src/features/profile/presentation/providers/provider_order_details.dart';
 import 'package:flutter_boilerplate_code/src/features/profile/presentation/providers/provider_profile_page.dart';
+import 'package:flutter_boilerplate_code/src/features/profile/presentation/providers/provider_shipping_addresses.dart';
 import 'di_container.dart' as di;
 import 'package:provider/provider.dart';
 
@@ -46,6 +47,8 @@ void main() async {
         ChangeNotifierProvider(create: (context) => di.sl<ProviderMyOrder>()),
         ChangeNotifierProvider(
             create: (context) => di.sl<ProviderOrderDetails>()),
+        ChangeNotifierProvider(
+            create: (context) => di.sl<ProviderShippingAddresses>()),
       ],
       child: const MyApp(),
     ),

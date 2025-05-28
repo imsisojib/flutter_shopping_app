@@ -1,4 +1,3 @@
-import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate_code/src/features/profile/data/order_details_data.dart';
 
@@ -28,102 +27,97 @@ class OrderDetailsCard extends StatelessWidget {
             ),
           ],
         ),
-        child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Column(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+                width: 120,
+                height: 130,
+                child: ClipRect(
+                  child: Image.asset(
+                    orderDetailsData.image,
+                    fit: BoxFit.cover,
+                  ),
+                )),
+            SizedBox(
+              width: 20,
+            ),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  ClipRect(
-                    child: Image.asset(
-                      orderDetailsData.image,
-                      fit: BoxFit.cover,
-                      width: 100,
-                      height: 100,
-                    ),
-                  )
-                ],
-              ),
-              SizedBox(
-                width: 20,
-              ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(orderDetailsData.title,
-                        style: theme.textTheme.titleMedium),
-                    SizedBox(height: 4),
-                    Text(orderDetailsData.company,
-                        style: theme.textTheme.bodyMedium
-                            ?.copyWith(color: Colors.grey)),
-                    SizedBox(height: 8),
-                    Row(
-                      children: [
-                        RichText(
-                          text: TextSpan(
-                            style: theme.textTheme.bodyMedium
-                                ?.copyWith(color: Colors.black),
-                            children: [
-                              TextSpan(
-                                text: 'Color:  ',
-                                style: TextStyle(color: Colors.grey),
-                              ),
-                              TextSpan(
-                                text: color,
-                              ),
-                            ],
-                          ),
+                  Text(orderDetailsData.title,
+                      style: theme.textTheme.titleMedium),
+                  SizedBox(height: 4),
+                  Text(orderDetailsData.company,
+                      style: theme.textTheme.bodyMedium
+                          ?.copyWith(color: Colors.grey)),
+                  SizedBox(height: 8),
+                  Row(
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                          style: theme.textTheme.bodyMedium
+                              ?.copyWith(color: Colors.black),
+                          children: [
+                            TextSpan(
+                              text: 'Color:  ',
+                              style: TextStyle(color: Colors.grey),
+                            ),
+                            TextSpan(
+                              text: color,
+                            ),
+                          ],
                         ),
-                        SizedBox(width: 12),
-                        RichText(
-                          text: TextSpan(
-                            style: theme.textTheme.bodyMedium
-                                ?.copyWith(color: Colors.black),
-                            children: [
-                              TextSpan(
-                                text: 'Size:  ',
-                                style: TextStyle(color: Colors.grey),
-                              ),
-                              TextSpan(
-                                text: size,
-                              ),
-                            ],
-                          ),
+                      ),
+                      SizedBox(width: 12),
+                      RichText(
+                        text: TextSpan(
+                          style: theme.textTheme.bodyMedium
+                              ?.copyWith(color: Colors.black),
+                          children: [
+                            TextSpan(
+                              text: 'Size:  ',
+                              style: TextStyle(color: Colors.grey),
+                            ),
+                            TextSpan(
+                              text: size,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 8),
+                  RichText(
+                    text: TextSpan(
+                      style: theme.textTheme.bodyMedium
+                          ?.copyWith(color: Colors.black),
+                      children: [
+                        TextSpan(
+                          text: 'Unit:  ',
+                          style: TextStyle(color: Colors.grey),
+                        ),
+                        TextSpan(
+                          text: (unit.toString()),
                         ),
                       ],
                     ),
-                    SizedBox(height: 8),
-                    RichText(
-                      text: TextSpan(
-                        style: theme.textTheme.bodyMedium
-                            ?.copyWith(color: Colors.black),
-                        children: [
-                          TextSpan(
-                            text: 'Unit:  ',
-                            style: TextStyle(color: Colors.grey),
-                          ),
-                          TextSpan(
-                            text: (unit.toString()),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Column(
-                children: [
-                  SizedBox(
-                    height: 100,
                   ),
-                  Text('\$$price', style: theme.textTheme.titleMedium)
                 ],
-              )
-            ],
-          ),
-          SizedBox(height: 12),
-        ]));
+              ),
+            ),
+            Column(
+              children: [
+                SizedBox(
+                  height: 100,
+                ),
+                Text('\$$price', style: theme.textTheme.titleMedium)
+              ],
+            ),
+            SizedBox(height: 12)
+          ],
+        ));
   }
 }

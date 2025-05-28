@@ -11,10 +11,12 @@ import 'package:flutter_boilerplate_code/src/features/favourite/presentation/scr
 import 'package:flutter_boilerplate_code/src/features/products/presentation/screens/screen_product_details.dart';
 import 'package:flutter_boilerplate_code/src/features/home/presentation/screens/screen_home.dart';
 import 'package:flutter_boilerplate_code/src/features/products/presentation/screens/screen_review.dart';
+import 'package:flutter_boilerplate_code/src/features/profile/presentation/screens/screen_add_shipping_address.dart';
 import 'package:flutter_boilerplate_code/src/features/profile/presentation/screens/screen_my_order.dart';
 import 'package:flutter_boilerplate_code/src/features/profile/presentation/screens/screen_order_details.dart';
 import 'package:flutter_boilerplate_code/src/features/profile/presentation/screens/screen_profile.dart';
 import 'package:flutter_boilerplate_code/src/features/profile/presentation/screens/screen_profile_setting.dart';
+import 'package:flutter_boilerplate_code/src/features/profile/presentation/screens/screen_shipping_adresses.dart';
 import 'package:flutter_boilerplate_code/src/routes/routes.dart';
 
 class RouterHelper {
@@ -51,6 +53,16 @@ class RouterHelper {
   static final Handler _orderDetailsHandler =
       Handler(handlerFunc: (context, Map<String, dynamic> parameters) {
     return const ScreenOrderDetails();
+  });
+
+  static final Handler _ShippingAddressesHandler =
+      Handler(handlerFunc: (context, Map<String, dynamic> parameters) {
+    return const ScreenShippingAddresses();
+  });
+
+  static final Handler _AddShippingAddressHandler =
+      Handler(handlerFunc: (context, Map<String, dynamic> parameters) {
+    return const ScreenAddShippingAddress();
   });
 
   static final Handler _categoriesHandler =
@@ -181,6 +193,18 @@ class RouterHelper {
     router.define(
       Routes.orderDetails,
       handler: _orderDetailsHandler,
+      transitionType: TransitionType.fadeIn,
+    );
+
+    router.define(
+      Routes.shippingAddress,
+      handler: _ShippingAddressesHandler,
+      transitionType: TransitionType.fadeIn,
+    );
+
+    router.define(
+      Routes.addShippingAddress,
+      handler: _AddShippingAddressHandler,
       transitionType: TransitionType.fadeIn,
     );
   }
