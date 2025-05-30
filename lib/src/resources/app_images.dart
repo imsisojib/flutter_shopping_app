@@ -5,4 +5,6 @@ class AppImages {
   static const String blackDress2 = "assets/images/image 2.png";
   static const String streetCloths = "assets/images/pexels-photo-911677.png";
   static const String men = "assets/images/men.png";
+  static const String success = "assets/images/success.png";
+  static const String successImage = "assets/images/successImage.png";
 }

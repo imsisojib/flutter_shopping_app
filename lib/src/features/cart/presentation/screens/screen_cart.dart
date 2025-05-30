@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate_code/src/features/cart/presentation/screens/screen_checkout.dart';
 import 'package:flutter_boilerplate_code/src/features/cart/presentation/widgets/bag_product_card.dart';
 import 'package:flutter_boilerplate_code/src/features/home/presentation/providers/provider_product_sale.dart';
 import 'package:flutter_boilerplate_code/src/features/home/presentation/widgets/bottom_navigation.dart';
@@ -110,7 +111,12 @@ class _ScreenCartState extends State<ScreenCart> {
                       height: 30,
                     ),
                     ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => ScreenCheckout()));
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.red,
                           foregroundColor: Colors.white,

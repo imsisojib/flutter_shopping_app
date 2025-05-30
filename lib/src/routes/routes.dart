@@ -10,6 +10,8 @@ class Routes {
   static const String shippingAddress = "/shippingAddress";
   static const String addShippingAddress = "/addShippingAddress";
 
+  static const String checkout = "/checkout";
+
   static const String productDetails = "/productDetails";
   static const String reviews = "/reviews";
 

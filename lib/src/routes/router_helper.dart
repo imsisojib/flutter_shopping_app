@@ -1,5 +1,6 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter_boilerplate_code/src/features/cart/presentation/screens/screen_cart.dart';
+import 'package:flutter_boilerplate_code/src/features/cart/presentation/screens/screen_checkout.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/screens/screen_categoory_women_tops_grid_view.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/screens/screen_category.dart';
 import 'package:flutter_boilerplate_code/src/features/categories/presentation/screens/screen_category_brand.dart';
@@ -55,14 +56,19 @@ class RouterHelper {
     return const ScreenOrderDetails();
   });
 
-  static final Handler _ShippingAddressesHandler =
+  static final Handler _shippingAddressesHandler =
       Handler(handlerFunc: (context, Map<String, dynamic> parameters) {
     return const ScreenShippingAddresses();
   });
 
-  static final Handler _AddShippingAddressHandler =
+  static final Handler _addShippingAddressHandler =
       Handler(handlerFunc: (context, Map<String, dynamic> parameters) {
     return const ScreenAddShippingAddress();
+  });
+
+  static final Handler _checkoutHandler =
+      Handler(handlerFunc: (context, Map<String, dynamic> parameters) {
+    return const ScreenCheckout();
   });
 
   static final Handler _categoriesHandler =
@@ -198,13 +204,19 @@ class RouterHelper {
 
     router.define(
       Routes.shippingAddress,
-      handler: _ShippingAddressesHandler,
+      handler: _shippingAddressesHandler,
       transitionType: TransitionType.fadeIn,
     );
 
     router.define(
       Routes.addShippingAddress,
-      handler: _AddShippingAddressHandler,
+      handler: _addShippingAddressHandler,
+      transitionType: TransitionType.fadeIn,
+    );
+
+    router.define(
+      Routes.checkout,
+      handler: _checkoutHandler,
       transitionType: TransitionType.fadeIn,
     );
   }
