@@ -7,4 +7,6 @@ class AppImages {
   static const String men = "assets/images/men.png";
   static const String success = "assets/images/success.png";
   static const String successImage = "assets/images/successImage.png";
+  static const String card = "assets/images/Card.png";
+  static const String card2 = "assets/images/Card 2.png";
 }

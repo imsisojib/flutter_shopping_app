@@ -15,6 +15,7 @@ import 'package:flutter_boilerplate_code/src/features/products/presentation/scre
 import 'package:flutter_boilerplate_code/src/features/profile/presentation/screens/screen_add_shipping_address.dart';
 import 'package:flutter_boilerplate_code/src/features/profile/presentation/screens/screen_my_order.dart';
 import 'package:flutter_boilerplate_code/src/features/profile/presentation/screens/screen_order_details.dart';
+import 'package:flutter_boilerplate_code/src/features/profile/presentation/screens/screen_payment_method.dart';
 import 'package:flutter_boilerplate_code/src/features/profile/presentation/screens/screen_profile.dart';
 import 'package:flutter_boilerplate_code/src/features/profile/presentation/screens/screen_profile_setting.dart';
 import 'package:flutter_boilerplate_code/src/features/profile/presentation/screens/screen_shipping_adresses.dart';
@@ -54,6 +55,11 @@ class RouterHelper {
   static final Handler _orderDetailsHandler =
       Handler(handlerFunc: (context, Map<String, dynamic> parameters) {
     return const ScreenOrderDetails();
+  });
+
+  static final Handler _paymentMethodsHandler =
+      Handler(handlerFunc: (context, Map<String, dynamic> parameters) {
+    return const ScreenPaymentMethod();
   });
 
   static final Handler _shippingAddressesHandler =
@@ -217,6 +223,12 @@ class RouterHelper {
     router.define(
       Routes.checkout,
       handler: _checkoutHandler,
+      transitionType: TransitionType.fadeIn,
+    );
+
+    router.define(
+      Routes.paymentMethods,
+      handler: _paymentMethodsHandler,
       transitionType: TransitionType.fadeIn,
     );
   }

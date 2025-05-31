@@ -7,6 +7,7 @@ class Routes {
   static const String profileSetting = "/profileSetting";
   static const String profileMyOrder = "/profileMyOrder";
   static const String orderDetails = "/orderDetails";
+  static const String paymentMethods = "/paymentMethods";
   static const String shippingAddress = "/shippingAddress";
   static const String addShippingAddress = "/addShippingAddress";
 
