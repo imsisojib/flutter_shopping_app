@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate_code/src/features/cart/presentation/screens/screen_checkout.dart';
 import 'package:flutter_boilerplate_code/src/features/cart/presentation/widgets/bag_product_card.dart';
+import 'package:flutter_boilerplate_code/src/features/cart/presentation/widgets/bottomsheet_promo_code.dart';
 import 'package:flutter_boilerplate_code/src/features/home/presentation/providers/provider_product_sale.dart';
 import 'package:flutter_boilerplate_code/src/features/home/presentation/widgets/bottom_navigation.dart';
 import 'package:provider/provider.dart';
@@ -79,12 +80,20 @@ class _ScreenCartState extends State<ScreenCart> {
                       borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide.none,
                     ),
-                    suffixIcon: CircleAvatar(
-                      backgroundColor: Colors.black,
-                      radius: 10,
-                      child: Icon(
-                        Icons.arrow_forward,
-                        color: Colors.white,
+                    suffixIcon: InkWell(
+                      onTap: () {
+                        showModalBottomSheet(
+                            context: context,
+                            backgroundColor: Colors.white,
+                            builder: (context) => BottomSheetPromoCode());
+                      },
+                      child: CircleAvatar(
+                        backgroundColor: Colors.black,
+                        radius: 10,
+                        child: Icon(
+                          Icons.arrow_forward,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),
