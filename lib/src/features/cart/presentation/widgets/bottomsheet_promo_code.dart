@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'build_bottomsheet_card.dart';
+
 class BottomSheetPromoCode extends StatelessWidget {
   const BottomSheetPromoCode({super.key});
 
@@ -57,87 +59,16 @@ class BottomSheetPromoCode extends StatelessWidget {
         SliverList(
           delegate: SliverChildListDelegate(
             [
-              _buildPromoCodeCard(context, "10% off", "Personal Offer",
-                  "mypromocode2020", "6 days remaining"),
-              _buildPromoCodeCard(context, "15% off", "Summer Sale",
+              buildPromoCodeCard(context, "10% off", Colors.red,
+                  "Personal Offer", "mypromocode2020", "6 days remaining"),
+              buildPromoCodeCard(context, "15% off", Colors.grey, "Summer Sale",
                   "summer2020", "23 days remaining"),
-              _buildPromoCodeCard(context, "22% off", "Personal Offer",
-                  "personal2024", "6 days remaining"),
+              buildPromoCodeCard(context, "22% off", Colors.black,
+                  "Personal Offer", "personal2024", "6 days remaining"),
             ],
           ),
         ),
       ],
-    );
-  }
-
-  Widget _buildPromoCodeCard(BuildContext context, String title,
-      String personalOffer, String code, String daysLeft) {
-    return IntrinsicHeight(
-      child: Card(
-        margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
-          child: Row(
-            children: [
-              Container(
-                width: 60,
-                height: 60,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Text(
-                  title,
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              SizedBox(width: 12),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(personalOffer,
-                        style: Theme.of(context).textTheme.bodyLarge),
-                    SizedBox(height: 4),
-                    Text(code,
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyMedium
-                            ?.copyWith(color: Colors.grey[600])),
-                  ],
-                ),
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(daysLeft, style: Theme.of(context).textTheme.bodySmall),
-                  SizedBox(height: 4),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
-                      foregroundColor: Colors.white,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 12, vertical: 3),
-                      textStyle: TextStyle(fontSize: 12),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                    ),
-                    child: Text("Apply"),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
     );
   }
 }
